@@ -1,0 +1,27 @@
+# José María Castro
+
+José María Castro is a freelance web developer and Senior Full Stack Developer based in Alcobendas, Madrid, Spain.
+
+## Services
+
+- Professional websites for local businesses, independent professionals and small companies.
+- Fast, cost-conscious delivery with direct communication.
+- Landing pages, business websites and custom web applications.
+- .NET, C#, React, Next.js, Node.js, SQL Server, integrations and automation.
+- Technical SEO, Google Search Console and consent-aware Google Analytics setup.
+
+## Service area
+
+Alcobendas, San Sebastián de los Reyes, Madrid and remote projects across Spain.
+
+## Primary pages
+
+- Portfolio and professional profile: https://josemcastro.dev/
+- Web development services in Alcobendas (Spanish): https://josemcastro.dev/desarrollo-web-alcobendas.html
+- Web development services in Alcobendas (English): https://josemcastro.dev/en/web-developer-alcobendas.html
+- LinkedIn: https://www.linkedin.com/in/josemcastrop/
+- GitHub: https://github.com/chemita19
+
+## Contact
+
+Email: jose1911castro@gmail.com

@@ -8,8 +8,8 @@ const LINKEDIN = 'https://www.linkedin.com/in/josemcastrop/';
 
 const content = {
   es: {
-    metaTitle: 'José María Castro | Senior Full Stack .NET en Alcobendas',
-    metaDescription: 'José María Castro, Senior Full Stack Developer en Alcobendas, Madrid. Desarrollo .NET, C#, React y Node.js, integraciones y automatización. Conoce mis proyectos y experiencia.',
+    metaTitle: 'Desarrollador Web Freelance en Alcobendas | José María Castro',
+    metaDescription: 'José María Castro, desarrollador web freelance y Senior Full Stack en Alcobendas. Páginas web profesionales, rápidas y con presupuesto ajustado para negocios y autónomos.',
     skip: 'Saltar al contenido', menu: 'Abrir menú', close: 'Cerrar menú',
     nav: [['Proyectos', 'proyectos'], ['Sobre mí', 'sobre-mi'], ['Tecnologías', 'stack'], ['Contacto', 'contacto']],
     role: 'Full Stack Engineer', stackLine: '.NET / React / Node / Next.js',
@@ -35,7 +35,7 @@ const content = {
     stackGroups: [['Core', 'C#', '.NET', 'SQL Server', 'REST APIs'], ['Web', 'React', 'Next.js', 'Node.js', 'JavaScript'], ['Delivery', 'Azure', 'Git', 'TFS'], ['AI + automation', 'Cursor', 'Agentes', 'n8n', 'Playwright']],
     breadthTitle: 'Distintos sectores. La misma obsesión por resolver bien.',
     extraProjects: [['Daruma', 'e-commerce'], ['SendTheJoy', 'e-commerce'], ['Nouretol', 'APIs'], ['Kumoba', 'real estate'], ['Oritzó', 'hospitality'], ['Nomad Burger', 'hospitality'], ['Wild Rumble', 'gaming']],
-    contactTitle: '¿Construimos algo que importe?', contactBody: 'Busco equipos y productos donde software, criterio e IA puedan mover el resultado.', contactCta: 'Hablemos',
+    contactTitle: '¿Construimos algo que importe?', contactBody: 'Webs profesionales y producto digital con entrega ágil, comunicación directa y un presupuesto ajustado a cada negocio.', contactCta: 'Hablemos', serviceLink: 'Desarrollo web para negocios en Alcobendas',
     footer: 'Full Stack Engineer', availability: 'Disponible para nuevas oportunidades', portraitAlt: 'Retrato profesional de José María Castro',
   },
   en: {
@@ -66,7 +66,7 @@ const content = {
     stackGroups: [['Core', 'C#', '.NET', 'SQL Server', 'REST APIs'], ['Web', 'React', 'Next.js', 'Node.js', 'JavaScript'], ['Delivery', 'Azure', 'Git', 'TFS'], ['AI + automation', 'Cursor', 'Agents', 'n8n', 'Playwright']],
     breadthTitle: 'Different sectors. The same obsession with solving things well.',
     extraProjects: [['Daruma', 'e-commerce'], ['SendTheJoy', 'e-commerce'], ['Nouretol', 'APIs'], ['Kumoba', 'real estate'], ['Oritzó', 'hospitality'], ['Nomad Burger', 'hospitality'], ['Wild Rumble', 'gaming']],
-    contactTitle: 'Shall we build something that matters?', contactBody: 'I am looking for teams and products where software, judgement and AI can move the outcome.', contactCta: 'Let\'s talk',
+    contactTitle: 'Shall we build something that matters?', contactBody: 'Professional websites and digital products with fast delivery, direct communication and a budget shaped around each business.', contactCta: 'Let\'s talk', serviceLink: 'Web development for businesses in Alcobendas',
     footer: 'Full Stack Engineer', availability: 'Open to new opportunities', portraitAlt: 'Professional portrait of José María Castro',
   },
 };
@@ -291,7 +291,7 @@ export default function Portfolio() {
         <div className="project-orbit">{t.extraProjects.map(([name,domain],i) => <span className={`orbit-project orbit-${i}`} key={name}><strong>{name}</strong><small>{domain}</small></span>)}</div><p className="corner bottom-left micro">{es ? 'Ideas en órbita real' : 'Ideas in real orbit'}</p><p className="corner bottom-right micro">{es ? 'Distintos mundos. Mejores soluciones.' : 'Different worlds. Better solutions.'}</p>
       </section>
       <section className="scene contact" id="contacto">
-        <Artwork name="contact"/><p className="corner top-left micro"><span className="rule-inline"/>{labels.contact}</p><div className="contact-copy" data-reveal><h2>{t.contactTitle}</h2><p>{t.contactBody}</p><a className="primary-action" href={`mailto:${EMAIL}`}>{t.contactCta}<span>→</span></a><div className="contact-links"><a href={`mailto:${EMAIL}`}>{EMAIL}</a><a href={LINKEDIN} target="_blank" rel="noreferrer">LinkedIn <span>⟶</span></a></div></div><p className="contact-note micro">{caption(labels.better)}</p><footer><span>José María Castro</span><span>Full Stack Engineer</span><span className="micro">{labels.footer}</span></footer>
+        <Artwork name="contact"/><p className="corner top-left micro"><span className="rule-inline"/>{labels.contact}</p><div className="contact-copy" data-reveal><h2>{t.contactTitle}</h2><p>{t.contactBody}</p><a className="primary-action" href={`mailto:${EMAIL}`}>{t.contactCta}<span>→</span></a><div className="contact-links"><a href={`mailto:${EMAIL}`}>{EMAIL}</a><a href={LINKEDIN} target="_blank" rel="noreferrer">LinkedIn <span>⟶</span></a><a className="service-link" href={es ? '/desarrollo-web-alcobendas.html' : '/en/web-developer-alcobendas.html'}>{t.serviceLink} <span>⟶</span></a></div></div><p className="contact-note micro">{caption(labels.better)}</p><footer><span>José María Castro</span><span>Full Stack Engineer</span><span className="micro">{labels.footer}</span></footer>
       </section>
     </main><nav className={`page-navigation ${activePage === 4 ? 'on-light' : ''}`} aria-label={es ? 'Secciones' : 'Sections'}>{pageIds.map((id,i) => <a href={`#${id}`} key={id} aria-current={activePage === i ? 'page' : undefined} aria-label={(es ? ['Inicio','Sobre mí','Proyectos','Experiencia','Tecnologías','Sectores','Contacto'] : ['Home','About','Projects','Experience','Technologies','Sectors','Contact'])[i]}><span/></a>)}</nav><DetailDialog detail={detail} close={() => setDetail(null)} lang={lang}/>
   </div>;
