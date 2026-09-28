@@ -26,13 +26,13 @@ const content = {
       { name: 'BCN Vision', domain: 'Visión industrial', line: 'Hacer usable la visión artificial.', detail: 'Herramientas para definir zonas de inspección y operar procesos visuales especializados.', theme: 'vision' },
     ],
     expTitle: 'De mantener módulos a construir producto completo.',
-    babel: { company: 'BABEL', date: '2019 - 2022', text: 'Crecí desde tareas júnior hasta asumir la responsabilidad del módulo CAE de OHS Solutions.', steps: ['Software empresarial', 'Responsabilidad', 'Full stack'] },
-    q2b: { company: 'Q2B Studio', date: '2022 - actualidad', text: 'Trabajo de extremo a extremo: requisitos, cliente, decisiones técnicas, desarrollo, integraciones y evolución.', steps: ['Producto', 'Cliente', 'Integraciones', 'IA asistida'] },
+    babel: { company: 'BABEL', date: '2019 - 2022', text: 'Crecí desde tareas júnior hasta asumir la responsabilidad del módulo CAE de OHS Solutions.', steps: ['Software empresarial', 'Responsabilidad', 'Full stack'], responsibilities: ['Desarrollo y evolución de software empresarial con .NET, C# y SQL Server.', 'Responsabilidad funcional y técnica del módulo de Coordinación de Actividades Empresariales (CAE).', 'Análisis de incidencias, mantenimiento evolutivo e integración dentro de una plataforma de prevención consolidada.'], technologies: ['C#', '.NET', 'SQL Server', 'TFS'] },
+    q2b: { company: 'Q2B Studio', date: '2022 - actualidad', text: 'Trabajo de extremo a extremo: requisitos, cliente, decisiones técnicas, desarrollo, integraciones y evolución.', steps: ['Producto', 'Cliente', 'Integraciones', 'IA asistida'], responsibilities: ['Toma de requisitos y comunicación directa con cliente para convertir necesidades en producto.', 'Diseño y desarrollo full stack de aplicaciones, paneles operativos, APIs e integraciones con servicios y dispositivos.', 'Decisiones técnicas, despliegue, mantenimiento evolutivo y automatización de procesos con herramientas de IA.'], technologies: ['.NET', 'React', 'Next.js', 'Node.js', 'Azure', 'Playwright', 'n8n'] },
     aiTitle: 'Más criterio. Menos trabajo repetitivo.',
     aiBody: 'Uso Cursor, agentes y automatizaciones para dedicar más tiempo a arquitectura, producto, decisiones y problemas difíciles.',
     aiStages: ['Filtra', 'Organiza', 'Automatiza'], aiFocus: ['Arquitectura', 'Producto', 'Decisiones'],
     stackTitle: 'Una base sólida. Un stack que evoluciona.', stackBody: 'Tecnología práctica para resolver hoy y construir lo que viene mañana.',
-    stackGroups: [['Core', 'C#', '.NET', 'SQL Server'], ['Web', 'React', 'Next.js', 'Node.js'], ['Delivery', 'Azure', 'Git', 'CI/CD'], ['AI + automation', 'Cursor', 'Agentes', 'n8n', 'Playwright']],
+    stackGroups: [['Core', 'C#', '.NET', 'SQL Server', 'REST APIs'], ['Web', 'React', 'Next.js', 'Node.js', 'JavaScript'], ['Delivery', 'Azure', 'Git', 'TFS'], ['AI + automation', 'Cursor', 'Agentes', 'n8n', 'Playwright']],
     breadthTitle: 'Distintos sectores. La misma obsesión por resolver bien.',
     extraProjects: [['Daruma', 'e-commerce'], ['SendTheJoy', 'e-commerce'], ['Nouretol', 'APIs'], ['Kumoba', 'real estate'], ['Oritzó', 'hospitality'], ['Nomad Burger', 'hospitality'], ['Wild Rumble', 'gaming']],
     contactTitle: '¿Construimos algo que importe?', contactBody: 'Busco equipos y productos donde software, criterio e IA puedan mover el resultado.', contactCta: 'Hablemos',
@@ -57,13 +57,13 @@ const content = {
       { name: 'BCN Vision', domain: 'Industrial vision', line: 'Making computer vision usable.', detail: 'Tools for defining inspection zones and operating specialised visual processes.', theme: 'vision' },
     ],
     expTitle: 'From maintaining modules to building complete products.',
-    babel: { company: 'BABEL', date: '2019 - 2022', text: 'I grew from junior tasks to owning the contractor coordination module in OHS Solutions.', steps: ['Enterprise software', 'Ownership', 'Full stack'] },
-    q2b: { company: 'Q2B Studio', date: '2022 - present', text: 'I work end to end: requirements, client conversations, technical decisions, development, integrations and evolution.', steps: ['Product', 'Client', 'Integrations', 'AI-assisted'] },
+    babel: { company: 'BABEL', date: '2019 - 2022', text: 'I grew from junior tasks to owning the contractor coordination module in OHS Solutions.', steps: ['Enterprise software', 'Ownership', 'Full stack'], responsibilities: ['Developed and evolved enterprise software with .NET, C# and SQL Server.', 'Took functional and technical ownership of the Contractor Activity Coordination (CAE) module.', 'Analysed incidents, delivered product improvements and integrated them into an established prevention platform.'], technologies: ['C#', '.NET', 'SQL Server', 'TFS'] },
+    q2b: { company: 'Q2B Studio', date: '2022 - present', text: 'I work end to end: requirements, client conversations, technical decisions, development, integrations and evolution.', steps: ['Product', 'Client', 'Integrations', 'AI-assisted'], responsibilities: ['Turn client conversations and requirements into concrete product decisions.', 'Design and build full-stack applications, operational dashboards, APIs and integrations with services and devices.', 'Own technical decisions, delivery, product evolution and process automation with AI-assisted tools.'], technologies: ['.NET', 'React', 'Next.js', 'Node.js', 'Azure', 'Playwright', 'n8n'] },
     aiTitle: 'More judgement. Less repetitive work.',
     aiBody: 'I use Cursor, agents and automation to spend more time on architecture, product, decisions and hard problems.',
     aiStages: ['Filter', 'Organise', 'Automate'], aiFocus: ['Architecture', 'Product', 'Decisions'],
     stackTitle: 'A solid foundation. A stack that evolves.', stackBody: 'Practical technology for solving today and building what comes next.',
-    stackGroups: [['Core', 'C#', '.NET', 'SQL Server'], ['Web', 'React', 'Next.js', 'Node.js'], ['Delivery', 'Azure', 'Git', 'CI/CD'], ['AI + automation', 'Cursor', 'Agents', 'n8n', 'Playwright']],
+    stackGroups: [['Core', 'C#', '.NET', 'SQL Server', 'REST APIs'], ['Web', 'React', 'Next.js', 'Node.js', 'JavaScript'], ['Delivery', 'Azure', 'Git', 'TFS'], ['AI + automation', 'Cursor', 'Agents', 'n8n', 'Playwright']],
     breadthTitle: 'Different sectors. The same obsession with solving things well.',
     extraProjects: [['Daruma', 'e-commerce'], ['SendTheJoy', 'e-commerce'], ['Nouretol', 'APIs'], ['Kumoba', 'real estate'], ['Oritzó', 'hospitality'], ['Nomad Burger', 'hospitality'], ['Wild Rumble', 'gaming']],
     contactTitle: 'Shall we build something that matters?', contactBody: 'I am looking for teams and products where software, judgement and AI can move the outcome.', contactCta: 'Let\'s talk',
@@ -94,7 +94,9 @@ function DetailDialog({ detail, close, lang }) {
   return <dialog className="detail-dialog" ref={ref} onCancel={close} onClick={event => { if (event.target === event.currentTarget) close(); }}>
     <button className="dialog-close" onClick={close} aria-label={lang === 'es' ? 'Cerrar detalle' : 'Close details'}>×</button>
     <p className="eyebrow">{detail.domain || detail.date}</p><h2>{detail.name || detail.company}</h2><p>{detail.detail || detail.text}</p>
-    {detail.steps && <ul>{detail.steps.map(step => <li key={step}>{step}</li>)}</ul>}
+    {detail.responsibilities && <div className="dialog-responsibilities"><h3>{lang === 'es' ? 'Responsabilidades' : 'Responsibilities'}</h3><ul>{detail.responsibilities.map(item => <li key={item}>{item}</li>)}</ul></div>}
+    {detail.technologies && <div className="dialog-technologies" aria-label={lang === 'es' ? 'Tecnologías' : 'Technologies'}>{detail.technologies.map(item => <span key={item}>{item}</span>)}</div>}
+    {!detail.responsibilities && detail.steps && <ul>{detail.steps.map(step => <li key={step}>{step}</li>)}</ul>}
     {detail.href && <a className="primary-action" href={detail.href} target="_blank" rel="noreferrer">{lang === 'es' ? 'Visitar proyecto' : 'Visit project'} <span>↗</span></a>}
   </dialog>;
 }
@@ -275,14 +277,14 @@ export default function Portfolio() {
       <section className="scene experience" id="experiencia">
         <Artwork name="experience"/><p className="corner top-left micro">{labels.experience}</p><p className="corner top-right micro">{caption(labels.purpose)}</p>
         <h2 className="experience-title" data-reveal>{labels.from}<br/><span>{labels.to}</span></h2>
-        <button className="career-heading babel-heading" onClick={() => setDetail(t.babel)}><strong>BABEL</strong><span>{t.babel.date}</span></button><button className="career-heading q2b-heading" onClick={() => setDetail(t.q2b)}><strong>Q2B Studio</strong><span>{t.q2b.date}</span></button>
+        <button className="career-heading babel-heading" onClick={() => setDetail(t.babel)}><img className="career-logo career-logo-babel" src="/logos/babel.svg" alt="BABEL"/><span>{t.babel.date}</span></button><button className="career-heading q2b-heading" onClick={() => setDetail(t.q2b)}><img className="career-logo career-logo-q2b" src="/logos/q2b.png" alt="Q2B Studio"/><span>{t.q2b.date}</span></button>
         <div className="career-labels">{[...t.babel.steps,...t.q2b.steps].map((x,i) => <span className={`career-label career-label-${i}`} key={x}>{x}</span>)}</div><p className="career-base micro">{es ? 'Base sólida para ir más lejos' : 'A solid base to go further'}</p>
         <div className="mobile-career">{[t.babel,t.q2b].map((job,i) => <article key={job.company}><span className="career-number">0{i + 1}</span><p className="eyebrow">{job.date}</p><h3>{job.company}</h3><p>{job.text}</p><div className="career-skills">{job.steps.map(step => <span key={step}>{step}</span>)}</div></article>)}</div>
       </section>
       <section className="scene stack-section light" id="stack">
         <Artwork name="stack"/><p className="corner top-left micro">José María Castro<br/>{labels.ideas}</p><p className="corner top-right micro">{labels.future}</p>
         <div className="stack-copy" data-reveal><SplitTitle text={t.stackTitle}/><p>{t.stackBody} {es ? 'Con IA y automatización para dedicar más tiempo a producto y arquitectura.' : 'With AI and automation to make more time for product and architecture.'}</p><span className="micro">{caption(labels.discipline)}</span></div>
-        <div className="stack-inscriptions" aria-hidden="true">{t.stackGroups.map(([group,...items],i) => <span className={`stack-inscription inscription-${i}`} key={group}>{items.join('　 ')}</span>)}</div><dl className="stack-legend">{t.stackGroups.map(([group,...items]) => <div key={group}><dt>{group}</dt><dd>{items.map(x => <span key={x}>{x}</span>)}</dd></div>)}</dl>
+        <div className="stack-inscriptions" aria-hidden="true">{t.stackGroups.map(([group,...items],i) => <span className={`stack-inscription inscription-${i}`} key={group}>{items.slice(0, i === 3 ? 4 : 3).map(item => <i key={item}>{item}</i>)}</span>)}</div><dl className="stack-legend">{t.stackGroups.map(([group,...items]) => <div key={group}><dt>{group}</dt><dd>{items.map(x => <span key={x}>{x}</span>)}</dd></div>)}</dl>
       </section>
       <section className="scene breadth" id="sectores">
         <Artwork name="breadth"/><p className="corner top-left micro">José María Castro <span className="rule-inline"/> {es ? 'Diseño que mueve negocios' : 'Design that moves business'}</p><SplitTitle text={t.breadthTitle} className="breadth-title"/><p className="breadth-description">{labels.breadth}</p>

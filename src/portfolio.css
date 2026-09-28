@@ -71,3 +71,26 @@ html,body,#root{height:100%;overflow:hidden}.site{height:100dvh;overflow-y:auto;
 @media(max-width:760px) and (max-height:700px){.about-copy{gap:12px;padding-top:12px;bottom:5%}.mobile-career{margin-top:16px;padding-left:20px}.mobile-career h3{font-size:25px;margin:6px 0 8px}.mobile-career article>p:not(.eyebrow){font-size:12px;line-height:1.4}.career-skills{margin-top:10px}.stack-copy>p{font-size:12px;margin-top:12px}}
 .privacy-control{position:fixed;z-index:60;bottom:8px;left:12px;font-size:11px;padding:7px 10px;background:#101a22e8;color:#d5e0e7;border:1px solid #6d819955;border-radius:3px}.consent-panel{position:fixed;z-index:65;left:20px;bottom:48px;width:min(410px,calc(100vw - 40px));padding:22px;background:#101a22;color:#edf1f4;border:1px solid #6d8199;box-shadow:0 15px 60px #0007}.consent-panel h2{font-size:21px;margin:0 0 12px}.consent-panel p{font-size:14px;line-height:1.55}.consent-panel>a{display:block;font-size:12px;text-decoration:underline;margin-top:12px}.consent-panel>div{display:flex;gap:10px;margin-top:18px}.consent-panel button{flex:1;background:#294b65;color:white;padding:12px 8px;min-height:44px;font-size:13px;border:1px solid #86a7bf}
 @media(prefers-reduced-motion:reduce){html,.site{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
+
+/* Resolution-safe stack labels: the overlay shares the exact cover geometry of the artwork. */
+.stack-inscriptions{position:absolute;left:50%;top:50%;width:max(100vw,177.6833dvh);height:max(56.2799vw,100dvh);transform:translate(-50%,-50%);pointer-events:none}
+.stack-inscription{display:flex;align-items:center;justify-content:space-between;width:29%;font-size:clamp(19px,2vw,38px);line-height:1;letter-spacing:-.045em}
+.stack-inscription i{font-style:normal;white-space:nowrap}
+.inscription-0{left:52%;top:9.4%;width:27.5%}
+.inscription-1{left:52%;top:28.4%;width:27%}
+.inscription-2{left:52%;top:47%;width:20%;font-size:clamp(18px,1.85vw,35px)}
+.inscription-3{left:51.4%;top:65.4%;width:31%;font-size:clamp(16px,1.62vw,31px)}
+.career-logo{display:block;object-fit:contain;object-position:left center;max-width:15vw;height:3.8vw;transition:filter .35s,transform .35s}
+.career-logo-babel{width:13vw}.career-logo-q2b{width:12vw;filter:grayscale(1) invert(1) brightness(1.7)}
+.career-heading:hover .career-logo{transform:translateX(5px)}
+.dialog-responsibilities{margin-top:25px;padding-top:22px;border-top:1px solid #6c829244}.dialog-responsibilities h3{margin:0 0 12px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#91b8d8}.dialog-responsibilities ul{margin:0}.dialog-technologies{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.dialog-technologies span{padding:7px 10px;border:1px solid #7790a455;background:#203342;color:#cfe1ee;font-size:12px;letter-spacing:.04em}
+@media(min-width:761px) and (max-width:1500px){.stack-copy{width:30%}.stack-copy h2{font-size:min(4.1vw,7.1vh)}.stack-legend{left:88%;right:1.2%}.stack-legend dt{font-size:clamp(15px,1.15vw,19px)}.stack-legend dd{font-size:clamp(9px,.62vw,11px);letter-spacing:.15em}}
+@media(max-width:760px){
+ .stack-section{padding:5.5dvh 6% 0}.stack-copy{position:relative;z-index:2}.stack-copy h2{font-size:clamp(30px,8.8vw,40px);max-width:92%}.stack-copy>p{font-size:clamp(12px,3.3vw,15px);line-height:1.45;max-width:92%;margin-top:1.8dvh}
+ .stack-section .artwork{left:-31%;top:27%;width:142%;height:39%;object-fit:cover;object-position:58% center}
+ .stack-inscriptions{display:none}.stack-legend{left:6%;right:7%;bottom:3.5%;top:auto;height:auto;display:grid;grid-template-columns:1fr 1fr;gap:1.6dvh 8vw;padding-top:1.8dvh;border-top:1px solid #24343d38}
+ .stack-legend>div{min-width:0}.stack-legend dt{font-size:clamp(13px,3.8vw,17px);line-height:1.1}.stack-legend dd{display:flex;flex-direction:row;flex-wrap:wrap;gap:3px 8px;font-size:clamp(8px,2.35vw,10px);line-height:1.35;margin-top:6px;letter-spacing:.08em}.stack-legend dd span:not(:last-child):after{content:' ·';opacity:.55}
+ .career-logo{height:34px;max-width:145px}.career-logo-babel{width:125px}.career-logo-q2b{width:115px}
+ .dialog-responsibilities{margin-top:20px;padding-top:18px}.dialog-responsibilities li{margin-bottom:8px;line-height:1.5}.dialog-technologies{margin-top:18px}
+}
+@media(max-width:760px) and (max-height:700px){.stack-section{padding-top:4dvh}.stack-section .artwork{top:26%;height:38%}.stack-legend{bottom:2%;gap:1dvh 7vw}.stack-legend dt{font-size:12px}.stack-legend dd{font-size:8px}.stack-copy>p{font-size:11px;margin-top:1dvh}}
