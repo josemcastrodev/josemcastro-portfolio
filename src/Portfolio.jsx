@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
 import gsap from 'gsap';
+import Analytics from './Analytics.jsx';
 
 const EMAIL = 'jose1911castro@gmail.com';
 const LINKEDIN = 'https://www.linkedin.com/in/josemcastrop/';
@@ -250,6 +251,7 @@ export default function Portfolio() {
   const projectLines = es ? ['Datos físicos. Decisiones operativas.', 'Automatización para equipos que avanzan.', 'Dispositivos conectados. Pagos sin fricción.', 'Visión industrial para un mundo más eficiente.'] : ['Physical data. Operational decisions.', 'Automation for teams moving forward.', 'Connected devices. Frictionless payments.', 'Industrial vision for a more efficient world.'];
   return <div className="site" ref={root} onClick={event => { const link = event.target.closest('a[href^="#"]'); if (link && pageIds.includes(link.hash.slice(1))) goToPage(event, link.hash.slice(1)); }}>
     <a className="skip-link" href="#main" onClick={event => { event.preventDefault(); document.getElementById('main')?.focus(); }}>{t.skip}</a>
+    <Analytics lang={lang} section={pageIds[activePage]}/>
     <main id="main" tabIndex={-1}>
       <section className="scene hero" id="inicio">
         <Artwork name="hero" priority/>
