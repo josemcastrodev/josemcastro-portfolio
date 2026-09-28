@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.npm-cache/
+work/npm-runtime/
+work/sites-plugin/
+work/*.tar.gz
