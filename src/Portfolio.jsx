@@ -7,15 +7,15 @@ const LINKEDIN = 'https://www.linkedin.com/in/josemcastrop/';
 
 const content = {
   es: {
-    metaTitle: 'José María Castro | Full Stack Engineer',
-    metaDescription: 'Portfolio de José María Castro, Full Stack Engineer especializado en producto digital, integraciones, automatización y desarrollo asistido por IA.',
+    metaTitle: 'José María Castro | Senior Full Stack .NET en Alcobendas',
+    metaDescription: 'José María Castro, Senior Full Stack Developer en Alcobendas, Madrid. Desarrollo .NET, C#, React y Node.js, integraciones y automatización. Conoce mis proyectos y experiencia.',
     skip: 'Saltar al contenido', menu: 'Abrir menú', close: 'Cerrar menú',
     nav: [['Proyectos', 'proyectos'], ['Sobre mí', 'sobre-mi'], ['Tecnologías', 'stack'], ['Contacto', 'contacto']],
     role: 'Full Stack Engineer', stackLine: '.NET / React / Node / Next.js',
     heroLine: 'Construyo producto, conecto sistemas y automatizo lo repetitivo.',
     projectsCta: 'Ver proyectos', journeyCta: 'Conocer mi recorrido',
     aboutTitle: 'Código, producto y una curiosidad bastante difícil de apagar.',
-    aboutBody: 'Me gusta entender cómo funciona todo el sistema, hablar con quien lo usa y convertir esa complejidad en software claro. Llevo siete años creciendo desde el código hacia el producto.',
+    aboutBody: 'Soy Senior Full Stack Developer en Alcobendas, Madrid, especializado en .NET, C# y React. Llevo siete años convirtiendo sistemas complejos en software claro, conectando código, personas y producto.',
     traits: ['Curiosidad', 'Criterio', 'Construcción'],
     workTitle: 'Tecnología real para un impacto tangible.', workHint: 'Explora cada proyecto', openCase: 'Visitar proyecto',
     projects: [
@@ -38,15 +38,15 @@ const content = {
     footer: 'Full Stack Engineer', availability: 'Disponible para nuevas oportunidades', portraitAlt: 'Retrato profesional de José María Castro',
   },
   en: {
-    metaTitle: 'José María Castro | Full Stack Engineer',
-    metaDescription: 'José María Castro portfolio. Full Stack Engineer focused on digital products, integrations, automation and AI-assisted development.',
+    metaTitle: 'José María Castro | Senior Full Stack .NET Developer, Madrid',
+    metaDescription: 'José María Castro, Senior Full Stack Developer based in Alcobendas, Madrid. .NET, C#, React and Node.js development, software integrations and automation.',
     skip: 'Skip to content', menu: 'Open menu', close: 'Close menu',
     nav: [['Projects', 'proyectos'], ['About', 'sobre-mi'], ['Technologies', 'stack'], ['Contact', 'contacto']],
     role: 'Full Stack Engineer', stackLine: '.NET / React / Node / Next.js',
     heroLine: 'I build products, connect systems and automate repetitive work.',
     projectsCta: 'View projects', journeyCta: 'See my journey',
     aboutTitle: 'Code, product and a curiosity that is quite hard to switch off.',
-    aboutBody: 'I like understanding the whole system, talking to the people who use it and turning that complexity into clear software. For seven years, I have grown from code towards product.',
+    aboutBody: 'I am a Senior Full Stack Developer based in Alcobendas, Madrid, specialising in .NET, C# and React. For seven years, I have turned complex systems into clear software, connecting code, people and product.',
     traits: ['Curiosity', 'Judgement', 'Craft'],
     workTitle: 'Real technology with tangible impact.', workHint: 'Explore each project', openCase: 'Visit project',
     projects: [
@@ -100,7 +100,7 @@ function DetailDialog({ detail, close, lang }) {
 export default function Portfolio() {
   const [lang, setLang] = useState(() => {
     try { const saved = localStorage.getItem('portfolio-language'); if (saved === 'es' || saved === 'en') return saved; } catch {}
-    return navigator.language?.toLowerCase().startsWith('en') ? 'en' : 'es';
+    return 'es';
   });
   const [menu, setMenu] = useState(false);
   const [detail, setDetail] = useState(null);
