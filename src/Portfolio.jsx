@@ -270,7 +270,7 @@ export default function Portfolio() {
         </header>
         <div className="hero-title-plane"><h1 className="hero-name" translate="no"><span>José María</span> <span>Castro</span></h1></div>
         <div className="hero-copy"><p className="hero-role">{t.role}</p><p className="hero-stack" translate="no">{t.stackLine}</p><span className="blue-rule"/><p className="hero-description">{t.heroLine}</p><div className="hero-actions"><a className="primary-action" href="#proyectos">{t.projectsCta}<span>→</span></a><a className="text-action" href="#experiencia">{t.journeyCta}</a></div></div>
-        <a className="hero-service-cta" href={es ? '/desarrollo-web-alcobendas.html' : '/en/web-developer-alcobendas.html'}>{es ? '¿Necesitas una web?' : 'Need a website?'} <span aria-hidden="true">↗</span></a>
+        <a className="hero-service-cta" href={es ? '/desarrollo-web-alcobendas' : '/en/web-developer-alcobendas'}>{es ? '¿Necesitas una web?' : 'Need a website?'} <span aria-hidden="true">↗</span></a>
         <span className="hero-engraving micro" aria-hidden="true">{caption(labels.connect)}</span><p className="hero-side micro">{labels.human}</p><p className="corner bottom-left micro">{labels.scale}</p><p className="corner bottom-right micro">{caption(labels.code)}</p>
       </section>
       <section className="scene about" id="sobre-mi"><Artwork name="about" alt={t.portraitAlt}/><div className="about-copy" data-reveal><h2>{t.aboutTitle}</h2><p>{t.aboutBody}</p><div className="trait-row">{t.traits.map(x => <span key={x}>{x}</span>)}</div></div></section>
