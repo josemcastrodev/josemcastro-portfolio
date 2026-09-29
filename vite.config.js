@@ -7,10 +7,14 @@ import { onRequestPost } from './functions/api/contact.js';
 const cleanRoutes = new Map([
   ['/desarrollo-web-alcobendas', '/desarrollo-web-alcobendas.html'],
   ['/en/web-developer-alcobendas', '/en/web-developer-alcobendas.html'],
+  ['/contacto-enviado', '/contacto-enviado.html'],
+  ['/en/message-sent', '/en/message-sent.html'],
 ]);
 const legacyRoutes = new Map([
   ['/desarrollo-web-alcobendas.html', '/desarrollo-web-alcobendas'],
   ['/en/web-developer-alcobendas.html', '/en/web-developer-alcobendas'],
+  ['/contacto-enviado.html', '/contacto-enviado'],
+  ['/en/message-sent.html', '/en/message-sent'],
 ]);
 
 function cleanLandingRoutes() {

@@ -17,9 +17,8 @@ export default function ContactForm({ lang }) {
       const response = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data), signal: AbortSignal.timeout(15000) });
       const result = await response.json();
       if (!response.ok || !result.ok) throw new Error(result.error || 'send');
-      setStatusType('success');
-      setStatus(es ? 'Mensaje recibido. Me pondré en contacto contigo en breve.' : 'Message received. I will be in touch shortly.');
-      form.reset();
+      window.gtag?.('event', 'generate_lead', { method: 'contact_form', language: es ? 'es' : 'en' });
+      window.location.assign(es ? '/contacto-enviado' : '/en/message-sent');
     } catch (error) {
       setStatusType('error');
       setStatus(error.message === 'email_not_configured'

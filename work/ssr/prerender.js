@@ -77,6 +77,7 @@ function ContactForm({ lang }) {
   const [statusType, setStatusType] = useState("");
   const [sending, setSending] = useState(false);
   async function submit(event) {
+    var _a;
     event.preventDefault();
     if (sending) return;
     const form = event.currentTarget;
@@ -88,9 +89,8 @@ function ContactForm({ lang }) {
       const response = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data), signal: AbortSignal.timeout(15e3) });
       const result = await response.json();
       if (!response.ok || !result.ok) throw new Error(result.error || "send");
-      setStatusType("success");
-      setStatus(es ? "Mensaje recibido. Me pondré en contacto contigo en breve." : "Message received. I will be in touch shortly.");
-      form.reset();
+      (_a = window.gtag) == null ? void 0 : _a.call(window, "event", "generate_lead", { method: "contact_form", language: es ? "es" : "en" });
+      window.location.assign(es ? "/contacto-enviado" : "/en/message-sent");
     } catch (error) {
       setStatusType("error");
       setStatus(error.message === "email_not_configured" ? es ? "El envío de correo no está configurado todavía. Escríbeme a jose1911castro@gmail.com." : "Email delivery is not configured yet. Write to jose1911castro@gmail.com." : es ? "No se pudo enviar. Inténtalo de nuevo o escríbeme a jose1911castro@gmail.com." : "The message could not be sent. Try again or email jose1911castro@gmail.com.");
