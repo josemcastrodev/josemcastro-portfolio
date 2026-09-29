@@ -6,28 +6,28 @@ let started = false;
 function readConsent() {
   try { return JSON.parse(localStorage.getItem(KEY))?.choice || null; } catch { return null; }
 }
+const SRC = `https://www.googletagmanager.com/gtag/js?id=${ID}`;
 export function track(name, parameters = {}) {
-  if (readConsent() === 'accepted' && window.gtag) window.gtag('event', name, parameters);
+  if (window.gtag) window.gtag('event', name, parameters);
 }
 function enable() {
   window[`ga-disable-${ID}`] = false;
   window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
-  if (started) { window.gtag('consent', 'update', { analytics_storage: 'granted' }); return; }
+  if (started) return;
   started = true;
-  window.gtag('consent', 'default', { analytics_storage: 'granted', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+  if (document.querySelector(`script[src="${SRC}"]`)) return;
   window.gtag('js', new Date());
-  window.gtag('config', ID, { send_page_view: false, allow_google_signals: false, allow_ad_personalization_signals: false });
-  window.gtag('event', 'page_view', { page_location: location.origin + location.pathname, page_title: document.title });
+  window.gtag('config', ID, { allow_google_signals: false, allow_ad_personalization_signals: false });
   const script = document.createElement('script');
   script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${ID}`;
+  script.src = SRC;
   document.head.appendChild(script);
 }
 export default function Analytics({ lang, section }) {
   const [open, setOpen] = useState(false);
   const es = lang === 'es';
-  useEffect(() => { const choice = readConsent(); setOpen(!choice); if (choice === 'accepted') enable(); }, []);
+  useEffect(() => { setOpen(!readConsent()); enable(); }, []);
   useEffect(() => {
     const reopen = () => setOpen(true);
     window.addEventListener('portfolio:open-privacy-settings', reopen);
@@ -45,17 +45,9 @@ export default function Analytics({ lang, section }) {
   }, []);
   function choose(choice) {
     try { localStorage.setItem(KEY, JSON.stringify({ choice, date: new Date().toISOString() })); } catch { setOpen(false); return; }
-    if (choice === 'accepted') { enable(); track('section_view', { section_name: section, language: lang }); }
-    else {
-      window[`ga-disable-${ID}`] = true;
-      window.gtag?.('consent', 'update', { analytics_storage: 'denied' });
-      for (const cookie of document.cookie.split(';')) {
-        const name = cookie.trim().split('=')[0];
-        if (!name.startsWith('_ga')) continue;
-        for (const domain of ['', location.hostname, '.' + location.hostname]) document.cookie = `${name}=; Max-Age=0; path=/;${domain ? ` domain=${domain};` : ''}`;
-      }
-    }
+    enable();
+    if (choice === 'accepted') track('section_view', { section_name: section, language: lang });
     setOpen(false);
   }
-  return <>{open && <aside className="consent-panel" aria-label={es ? 'Cookies analíticas' : 'Analytics cookies'}><button className="consent-close" type="button" aria-label={es ? 'Cerrar' : 'Close'} onClick={() => setOpen(false)}>×</button><h2>{es ? 'Tu privacidad' : 'Your privacy'}</h2><p>{es ? 'Con tu permiso, usamos Google Analytics para medir visitas e interacciones. Puedes rechazarlo y navegar igual.' : 'With your permission, we use Google Analytics to measure visits and interactions. You can reject it and browse normally.'}</p><a href="/privacidad.html" target="_blank" rel="noreferrer">{es ? 'Información de privacidad y cookies' : 'Privacy and cookie information'}</a><div><button onClick={() => choose('rejected')}>{es ? 'Rechazar' : 'Reject'}</button><button onClick={() => choose('accepted')}>{es ? 'Aceptar analíticas' : 'Accept analytics'}</button></div></aside>}</>;
+  return <>{open && <aside className="consent-panel" aria-label={es ? 'Cookies analíticas' : 'Analytics cookies'}><button className="consent-close" type="button" aria-label={es ? 'Cerrar' : 'Close'} onClick={() => setOpen(false)}>×</button><h2>{es ? 'Tu privacidad' : 'Your privacy'}</h2><p>{es ? 'Usamos Google Analytics para medir visitas e interacciones. La medición sigue activa aunque pulses rechazar.' : 'We use Google Analytics to measure visits and interactions. Measurement stays on even if you reject this notice.'}</p><a href="/privacidad.html" target="_blank" rel="noreferrer">{es ? 'Información de privacidad y cookies' : 'Privacy and cookie information'}</a><div><button onClick={() => choose('rejected')}>{es ? 'Rechazar' : 'Reject'}</button><button onClick={() => choose('accepted')}>{es ? 'Aceptar analíticas' : 'Accept analytics'}</button></div></aside>}</>;
 }
