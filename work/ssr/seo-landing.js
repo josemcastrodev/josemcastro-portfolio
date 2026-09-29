@@ -276,6 +276,46 @@
     });
   });
 
+  const es = document.documentElement.lang !== 'en';
+  document.querySelectorAll('[data-contact-form]').forEach(form => {
+    const status = form.querySelector('.form-status');
+    const button = form.querySelector('button[type="submit"]');
+    const label = form.querySelector('.submit-label');
+    const idleLabel = label?.textContent || '';
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      if (button?.disabled) return;
+      if (button) button.disabled = true;
+      if (label) label.textContent = es ? 'Enviando…' : 'Sending…';
+      status?.classList.remove('success', 'error');
+      if (status) status.textContent = '';
+      try {
+        const data = Object.fromEntries(new FormData(form));
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+          signal: AbortSignal.timeout(15000),
+        });
+        const result = await response.json();
+        if (!response.ok || !result.ok) throw new Error(result.error || 'send');
+        status?.classList.add('success');
+        if (status) status.textContent = es
+          ? 'Mensaje recibido. Me pondré en contacto contigo en breve.'
+          : 'Message received. I will be in touch shortly.';
+        form.reset();
+      } catch (error) {
+        status?.classList.add('error');
+        if (status) status.textContent = error.message === 'email_not_configured'
+          ? (es ? 'El envío de correo no está configurado todavía. Escríbeme a jose1911castro@gmail.com.' : 'Email delivery is not configured yet. Write to jose1911castro@gmail.com.')
+          : (es ? 'No se pudo enviar. Inténtalo de nuevo o escríbeme a jose1911castro@gmail.com.' : 'The message could not be sent. Try again or email jose1911castro@gmail.com.');
+      } finally {
+        if (button) button.disabled = false;
+        if (label) label.textContent = idleLabel;
+      }
+    });
+  });
+
   window.addEventListener('pagehide', () => {
     observer.disconnect();
     desktop.removeEventListener('change', setup);
