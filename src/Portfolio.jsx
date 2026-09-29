@@ -36,7 +36,7 @@ const content = {
     stackGroups: [['Core', 'C#', '.NET', 'SQL Server', 'REST APIs'], ['Web', 'React', 'Next.js', 'Node.js', 'JavaScript'], ['Delivery', 'Azure', 'Git', 'TFS'], ['AI + automation', 'Cursor', 'Agentes', 'n8n', 'Playwright']],
     breadthTitle: 'Distintos sectores. La misma obsesión por resolver bien.',
     extraProjects: [['Daruma', 'e-commerce'], ['SendTheJoy', 'e-commerce'], ['Nouretol', 'APIs'], ['Kumoba', 'real estate'], ['Oritzó', 'hospitality'], ['Nomad Burger', 'hospitality'], ['Wild Rumble', 'gaming']],
-    contactTitle: '¿Construimos algo que importe?', contactBody: 'Webs profesionales y producto digital con entrega ágil, comunicación directa y un presupuesto ajustado a cada negocio.', contactCta: 'Hablemos', serviceLink: 'Desarrollo web para negocios en Alcobendas',
+    contactTitle: '¿Construimos tu próxima web?', contactBody: 'Cuéntame tu idea. Te respondo yo, sin intermediarios.', contactCta: 'Enviar mensaje', serviceLink: 'Desarrollo web para negocios en Alcobendas',
     footer: 'Full Stack Engineer', availability: 'Disponible para nuevas oportunidades', portraitAlt: 'Retrato profesional de José María Castro',
   },
   en: {
@@ -67,7 +67,7 @@ const content = {
     stackGroups: [['Core', 'C#', '.NET', 'SQL Server', 'REST APIs'], ['Web', 'React', 'Next.js', 'Node.js', 'JavaScript'], ['Delivery', 'Azure', 'Git', 'TFS'], ['AI + automation', 'Cursor', 'Agents', 'n8n', 'Playwright']],
     breadthTitle: 'Different sectors. The same obsession with solving things well.',
     extraProjects: [['Daruma', 'e-commerce'], ['SendTheJoy', 'e-commerce'], ['Nouretol', 'APIs'], ['Kumoba', 'real estate'], ['Oritzó', 'hospitality'], ['Nomad Burger', 'hospitality'], ['Wild Rumble', 'gaming']],
-    contactTitle: 'Shall we build something that matters?', contactBody: 'Professional websites and digital products with fast delivery, direct communication and a budget shaped around each business.', contactCta: 'Let\'s talk', serviceLink: 'Web development for businesses in Alcobendas',
+    contactTitle: 'Shall we build your next website?', contactBody: 'Share your idea. I reply directly, without intermediaries.', contactCta: 'Send message', serviceLink: 'Web development for businesses in Alcobendas',
     footer: 'Full Stack Engineer', availability: 'Open to new opportunities', portraitAlt: 'Professional portrait of José María Castro',
   },
 };
@@ -296,9 +296,10 @@ export default function Portfolio() {
         <div className="project-orbit">{t.extraProjects.map(([name,domain],i) => <span className={`orbit-project orbit-${i}`} key={name}><strong>{name}</strong><small>{domain}</small></span>)}</div><p className="corner bottom-left micro">{es ? 'Ideas en órbita real' : 'Ideas in real orbit'}</p><p className="corner bottom-right micro">{es ? 'Distintos mundos. Mejores soluciones.' : 'Different worlds. Better solutions.'}</p>
       </section>
       <section className="scene contact" id="contacto">
-        <Artwork name="contact"/><p className="corner top-left micro"><span className="rule-inline"/>{labels.contact}</p>
-        <div className="contact-layout"><div className="contact-copy" data-reveal><h2>{t.contactTitle}</h2><p>{t.contactBody}</p><div className="contact-links"><a href={`mailto:${EMAIL}`}>{EMAIL}<span>↗</span></a><a href={LINKEDIN} target="_blank" rel="noreferrer">LinkedIn<span>↗</span></a><a href={es ? '/desarrollo-web-alcobendas' : '/en/web-developer-alcobendas'}>{es ? 'Una web para tu negocio' : 'A website for your business'}<span>↗</span></a></div></div><ContactForm lang={lang}/></div>
-        <footer><span>José María Castro</span><span>Full Stack Engineer</span><span className="micro">{labels.footer}</span></footer>
+        <img className="artwork" src="/art/contacto.png" width="1672" height="941" alt="" loading="lazy"/>
+        <div className="contact-identity"><span>José María Castro</span><small>{es ? 'Web · Cine · Historias de piedra' : 'Web · Cinema · Stone stories'}</small></div>
+        <div className="contact-layout"><div className="contact-copy" data-reveal><span className="contact-blue-rule" aria-hidden="true"/><h2>{es ? <>¿Construimos<br/>tu próxima web?</> : <>Shall we build<br/>your next website?</>}</h2><p>{es ? <>Cuéntame tu idea. Te respondo yo,<br/>sin intermediarios.</> : <>Share your idea. I reply directly,<br/>without intermediaries.</>}</p><div className="contact-links"><a href={`mailto:${EMAIL}`}><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15"/><path d="m3 6 9 7 9-7"/></svg><span>{EMAIL}</span></a><a href={LINKEDIN} target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19"/><path d="M7 10v7M7 7v.1M11 17v-7m0 3a3 3 0 0 1 6 0v4"/></svg><span>linkedin.com/in/jose-maria-castro</span></a></div></div><ContactForm lang={lang}/></div>
+        <footer><span>José María Castro<small>{es ? 'Arquitectura web para un mundo real' : 'Web architecture for a real world'}</small></span><button className="privacy-settings" type="button" onClick={() => window.dispatchEvent(new Event('portfolio:open-privacy-settings'))}>{es ? 'Privacidad' : 'Privacy'}</button><span>{es ? 'Cine · Piedra · Tecnología · Personas' : 'Cinema · Stone · Technology · People'}</span></footer>
       </section>
     </main><nav className={`page-navigation ${activePage === 4 ? 'on-light' : ''}`} aria-label={es ? 'Secciones' : 'Sections'}>{pageIds.map((id,i) => <a href={`#${id}`} key={id} aria-current={activePage === i ? 'page' : undefined} aria-label={(es ? ['Inicio','Sobre mí','Proyectos','Experiencia','Tecnologías','Sectores','Contacto'] : ['Home','About','Projects','Experience','Technologies','Sectors','Contact'])[i]}><span/></a>)}</nav><DetailDialog detail={detail} close={() => setDetail(null)} lang={lang}/>
   </div>;

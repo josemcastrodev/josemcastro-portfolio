@@ -11,14 +11,27 @@ export async function onRequestPost({ request, env }) {
   if (data.website) return reply(200, { ok: true });
   const { name, email, message, privacy } = data;
   if (typeof name !== 'string' || !name.trim() || name.length > 100 || typeof email !== 'string' || email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || typeof message !== 'string' || message.trim().length < 10 || message.length > 5000 || privacy !== 'yes') return reply(400, { ok: false });
-  // Fail closed until the mail provider is connected; never report a fake delivery.
-  if (!env.RESEND_API_KEY || !env.CONTACT_FROM) return reply(503, { ok: false });
+  if (!env.RESEND_API_KEY || !env.CONTACT_FROM) return reply(503, { ok: false, error: 'email_not_configured' });
   try {
     const response = await fetch('https://api.resend.com/emails', {
-      method: 'POST', headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ from: env.CONTACT_FROM, to: ['jose1911castro@gmail.com'], reply_to: email, subject: 'Nueva consulta desde josemcastro.dev', text: `Nombre: ${name.trim()}\nEmail: ${email}\n\n${message.trim()}` }),
+      method: 'POST',
+      headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        from: env.CONTACT_FROM,
+        to: ['jose1911castro@gmail.com'],
+        reply_to: email,
+        subject: 'Nueva consulta desde josemcastro.dev',
+        text: `Nombre: ${name.trim()}\nEmail: ${email}\n\n${message.trim()}`,
+      }),
       signal: AbortSignal.timeout(10000),
     });
-    return reply(response.ok ? 200 : 502, { ok: response.ok });
-  } catch { return reply(502, { ok: false }); }
+    if (!response.ok) {
+      const detail = await response.text();
+      console.error('Resend delivery failed', response.status, detail.slice(0, 300));
+      return reply(502, { ok: false, error: 'email_provider_failed' });
+    }
+    return reply(200, { ok: true });
+  } catch {
+    return reply(502, { ok: false, error: 'email_provider_failed' });
+  }
 }

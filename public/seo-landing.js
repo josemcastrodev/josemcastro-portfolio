@@ -7,6 +7,7 @@
   const desktop = window.matchMedia('(min-width: 761px)');
   const menuToggle = document.querySelector('.menu-toggle');
   const menu = document.querySelector('.site-nav .nav-links');
+  const languageSwitch = document.querySelector('.site-nav .language-switch');
   const labels = document.documentElement.lang === 'en'
     ? ['Introduction', 'Solutions', 'Process', 'Contact']
     : ['Inicio', 'Soluciones', 'Proceso', 'Contacto'];
@@ -42,6 +43,7 @@
   const closeMenu = () => {
     menu?.classList.remove('open');
     menuToggle?.setAttribute('aria-expanded', 'false');
+    if (menuToggle) menuToggle.textContent = '☰';
     if (menuToggle) menuToggle.setAttribute('aria-label', document.documentElement.lang === 'en' ? 'Open menu' : 'Abrir menú');
   };
 
@@ -49,12 +51,19 @@
     const open = menuToggle.getAttribute('aria-expanded') !== 'true';
     menu?.classList.toggle('open', open);
     menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.textContent = open ? '×' : '☰';
     menuToggle.setAttribute('aria-label', open
       ? (document.documentElement.lang === 'en' ? 'Close menu' : 'Cerrar menú')
       : (document.documentElement.lang === 'en' ? 'Open menu' : 'Abrir menú'));
   });
   menu?.addEventListener('click', event => {
     if (event.target.closest('a')) closeMenu();
+  });
+  languageSwitch?.addEventListener('click', event => {
+    const button = event.target.closest('button[lang]');
+    if (!button) return;
+    const nextPath = button.lang === 'en' ? '/en/web-developer-alcobendas' : '/desarrollo-web-alcobendas';
+    if (nextPath !== cleanPath) window.location.assign(nextPath);
   });
 
   let currentIndex = Math.max(0, scenes.findIndex(scene => scene.id === location.hash.slice(1)));
@@ -263,6 +272,46 @@
         }
       } finally {
         accordionBusy = false;
+      }
+    });
+  });
+
+  const es = document.documentElement.lang !== 'en';
+  document.querySelectorAll('[data-contact-form]').forEach(form => {
+    const status = form.querySelector('.form-status');
+    const button = form.querySelector('button[type="submit"]');
+    const label = form.querySelector('.submit-label');
+    const idleLabel = label?.textContent || '';
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      if (button?.disabled) return;
+      if (button) button.disabled = true;
+      if (label) label.textContent = es ? 'Enviando…' : 'Sending…';
+      status?.classList.remove('success', 'error');
+      if (status) status.textContent = '';
+      try {
+        const data = Object.fromEntries(new FormData(form));
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+          signal: AbortSignal.timeout(15000),
+        });
+        const result = await response.json();
+        if (!response.ok || !result.ok) throw new Error(result.error || 'send');
+        status?.classList.add('success');
+        if (status) status.textContent = es
+          ? 'Mensaje recibido. Me pondré en contacto contigo en breve.'
+          : 'Message received. I will be in touch shortly.';
+        form.reset();
+      } catch (error) {
+        status?.classList.add('error');
+        if (status) status.textContent = error.message === 'email_not_configured'
+          ? (es ? 'El envío de correo no está configurado todavía. Escríbeme a jose1911castro@gmail.com.' : 'Email delivery is not configured yet. Write to jose1911castro@gmail.com.')
+          : (es ? 'No se pudo enviar. Inténtalo de nuevo o escríbeme a jose1911castro@gmail.com.' : 'The message could not be sent. Try again or email jose1911castro@gmail.com.');
+      } finally {
+        if (button) button.disabled = false;
+        if (label) label.textContent = idleLabel;
       }
     });
   });

@@ -23,7 +23,7 @@
 }
 
 :root {
-  font-family: Manrope, sans-serif;
+  font-family: Manrope, Arial, Helvetica, sans-serif;
   color: #eeeae3;
   background: #101416;
   --scene-blue: #3c88b7;
@@ -42,6 +42,7 @@ body {
 
 body {
   margin: 0;
+  font-family: Manrope, Arial, Helvetica, sans-serif;
   background: var(--scene-ink);
   color: var(--scene-white);
 }
@@ -1094,7 +1095,7 @@ body {
   }
 
   #soluciones::after {
-    background: none;
+    background: linear-gradient(180deg, rgba(8, 13, 16, 0.42), rgba(8, 13, 16, 0.18) 28%, rgba(8, 13, 16, 0.84) 58%, rgba(8, 13, 16, 0.94));
   }
 
   #solutions-title {
@@ -1108,7 +1109,7 @@ body {
     inset: 29% 6% 6%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 0;
   }
 
@@ -1117,7 +1118,7 @@ body {
   }
 
   .service-list {
-    justify-content: flex-end;
+    justify-content: center;
   }
 
   .service-list article > a {
@@ -1702,14 +1703,20 @@ body {
   transform: translateX(-7vw);
 }
 
-.site-nav .language-switch a {
+.site-nav .language-switch button {
+  display: grid;
   min-width: 2.2vw;
   min-height: 36px;
+  padding: 0;
+  border: 0;
+  place-items: center;
+  background: none;
   color: #7e898f;
   font: 400 0.68vw 'DM Mono', monospace;
+  cursor: pointer;
 }
 
-.site-nav .language-switch a[aria-current='page'] {
+.site-nav .language-switch button[aria-pressed='true'] {
   color: #f1eee7;
   text-decoration: underline;
   text-underline-offset: 5px;
@@ -1737,15 +1744,15 @@ body {
 
 @media (max-width: 760px) {
   .site-nav.nav-wrap {
-    top: 22px;
-    right: 22px;
-    left: 22px;
+    top: 18px;
+    right: 5%;
+    left: 6%;
     gap: 18px;
   }
 
   .site-nav .logo-mark {
-    width: 26px;
-    height: 35px;
+    width: 36px;
+    height: 41px;
   }
 
   .site-nav .hero-motto {
@@ -1759,10 +1766,12 @@ body {
     transform: none;
   }
 
-  .site-nav .language-switch a {
+  .site-nav .language-switch button {
     min-width: 38px;
     min-height: 44px;
-    font-size: 12px;
+    padding: 1px 6px;
+    font: 400 12px 'DM Mono';
+    letter-spacing: 0;
   }
 
   .site-nav .nav-links {
@@ -1781,6 +1790,7 @@ body {
     padding: 28px;
     border: 1px solid #536374;
     background: #101a23f5;
+    box-shadow: 0 24px 60px #0008;
   }
 
   .site-nav .nav-links a {
@@ -1792,7 +1802,17 @@ body {
     display: block;
     width: 44px;
     height: 44px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    appearance: none;
     background: none;
+    font: inherit;
     font-size: 24px;
+  }
+
+  .site-nav .menu-toggle:focus-visible {
+    outline: 2px solid #8fc8f1;
+    outline-offset: 4px;
   }
 }

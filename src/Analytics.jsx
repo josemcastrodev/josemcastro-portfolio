@@ -28,6 +28,11 @@ export default function Analytics({ lang, section }) {
   const [open, setOpen] = useState(false);
   const es = lang === 'es';
   useEffect(() => { const choice = readConsent(); setOpen(!choice); if (choice === 'accepted') enable(); }, []);
+  useEffect(() => {
+    const reopen = () => setOpen(true);
+    window.addEventListener('portfolio:open-privacy-settings', reopen);
+    return () => window.removeEventListener('portfolio:open-privacy-settings', reopen);
+  }, []);
   useEffect(() => { track('section_view', { section_name: section, language: lang }); }, [section, lang]);
   useEffect(() => {
     const click = event => {
@@ -52,5 +57,5 @@ export default function Analytics({ lang, section }) {
     }
     setOpen(false);
   }
-  return <><button className="privacy-control" onClick={() => setOpen(true)}>{es ? 'Privacidad' : 'Privacy'}</button>{open && <aside className="consent-panel" aria-label={es ? 'Cookies analíticas' : 'Analytics cookies'}><h2>{es ? 'Tu privacidad' : 'Your privacy'}</h2><p>{es ? 'Con tu permiso, usamos Google Analytics para medir visitas e interacciones. Puedes rechazarlo y navegar igual.' : 'With your permission, we use Google Analytics to measure visits and interactions. You can reject it and browse normally.'}</p><a href="/privacidad.html" target="_blank" rel="noreferrer">{es ? 'Información de privacidad y cookies' : 'Privacy and cookie information'}</a><div><button onClick={() => choose('rejected')}>{es ? 'Rechazar' : 'Reject'}</button><button onClick={() => choose('accepted')}>{es ? 'Aceptar analíticas' : 'Accept analytics'}</button></div></aside>}</>;
+  return <>{open && <aside className="consent-panel" aria-label={es ? 'Cookies analíticas' : 'Analytics cookies'}><button className="consent-close" type="button" aria-label={es ? 'Cerrar' : 'Close'} onClick={() => setOpen(false)}>×</button><h2>{es ? 'Tu privacidad' : 'Your privacy'}</h2><p>{es ? 'Con tu permiso, usamos Google Analytics para medir visitas e interacciones. Puedes rechazarlo y navegar igual.' : 'With your permission, we use Google Analytics to measure visits and interactions. You can reject it and browse normally.'}</p><a href="/privacidad.html" target="_blank" rel="noreferrer">{es ? 'Información de privacidad y cookies' : 'Privacy and cookie information'}</a><div><button onClick={() => choose('rejected')}>{es ? 'Rechazar' : 'Reject'}</button><button onClick={() => choose('accepted')}>{es ? 'Aceptar analíticas' : 'Accept analytics'}</button></div></aside>}</>;
 }

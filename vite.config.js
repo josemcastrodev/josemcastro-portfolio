@@ -1,6 +1,8 @@
 import { defineConfig } from 'vite';
+import { loadEnv } from 'vite';
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import { onRequestPost } from './functions/api/contact.js';
 
 const cleanRoutes = new Map([
   ['/desarrollo-web-alcobendas', '/desarrollo-web-alcobendas.html'],
@@ -48,6 +50,56 @@ function cleanLandingRoutes() {
   };
 }
 
+function localContactApi() {
+  let fileEnv = {};
+  const middleware = async (request, response, next) => {
+    if (!request.url || new URL(request.url, 'http://localhost').pathname !== '/api/contact') return next();
+    if (request.method !== 'POST') {
+      response.writeHead(405, { Allow: 'POST', 'Content-Type': 'application/json' });
+      response.end(JSON.stringify({ ok: false, error: 'method_not_allowed' }));
+      return;
+    }
+
+    try {
+      const chunks = [];
+      for await (const chunk of request) chunks.push(Buffer.from(chunk));
+      const url = new URL(request.url, `http://${request.headers.host || '127.0.0.1'}`);
+      const webRequest = new Request(url, {
+        method: 'POST',
+        headers: {
+          origin: request.headers.origin || url.origin,
+          'content-type': request.headers['content-type'] || 'application/json',
+        },
+        body: Buffer.concat(chunks),
+      });
+      const result = await onRequestPost({
+        request: webRequest,
+        env: {
+          RESEND_API_KEY: process.env.RESEND_API_KEY || fileEnv.RESEND_API_KEY,
+          CONTACT_FROM: process.env.CONTACT_FROM || fileEnv.CONTACT_FROM,
+        },
+      });
+      response.writeHead(result.status, Object.fromEntries(result.headers));
+      response.end(Buffer.from(await result.arrayBuffer()));
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  return {
+    name: 'local-contact-api',
+    config(_, { mode }) {
+      fileEnv = loadEnv(mode, process.cwd(), '');
+    },
+    configureServer(server) {
+      server.middlewares.use(middleware);
+    },
+    configurePreviewServer(server) {
+      server.middlewares.use(middleware);
+    },
+  };
+}
+
 export default defineConfig({
-  plugins: [cleanLandingRoutes()],
+  plugins: [cleanLandingRoutes(), localContactApi()],
 });

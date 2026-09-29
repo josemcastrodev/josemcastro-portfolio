@@ -1,5 +1,7 @@
 node_modules/
 dist/
+.env
+.env.*
 .npm-cache/
 work/npm-runtime/
 work/sites-plugin/

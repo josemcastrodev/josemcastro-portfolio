@@ -7,6 +7,7 @@
   const desktop = window.matchMedia('(min-width: 761px)');
   const menuToggle = document.querySelector('.menu-toggle');
   const menu = document.querySelector('.site-nav .nav-links');
+  const languageSwitch = document.querySelector('.site-nav .language-switch');
   const labels = document.documentElement.lang === 'en'
     ? ['Introduction', 'Solutions', 'Process', 'Contact']
     : ['Inicio', 'Soluciones', 'Proceso', 'Contacto'];
@@ -42,6 +43,7 @@
   const closeMenu = () => {
     menu?.classList.remove('open');
     menuToggle?.setAttribute('aria-expanded', 'false');
+    if (menuToggle) menuToggle.textContent = '☰';
     if (menuToggle) menuToggle.setAttribute('aria-label', document.documentElement.lang === 'en' ? 'Open menu' : 'Abrir menú');
   };
 
@@ -49,12 +51,19 @@
     const open = menuToggle.getAttribute('aria-expanded') !== 'true';
     menu?.classList.toggle('open', open);
     menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.textContent = open ? '×' : '☰';
     menuToggle.setAttribute('aria-label', open
       ? (document.documentElement.lang === 'en' ? 'Close menu' : 'Cerrar menú')
       : (document.documentElement.lang === 'en' ? 'Open menu' : 'Abrir menú'));
   });
   menu?.addEventListener('click', event => {
     if (event.target.closest('a')) closeMenu();
+  });
+  languageSwitch?.addEventListener('click', event => {
+    const button = event.target.closest('button[lang]');
+    if (!button) return;
+    const nextPath = button.lang === 'en' ? '/en/web-developer-alcobendas' : '/desarrollo-web-alcobendas';
+    if (nextPath !== cleanPath) window.location.assign(nextPath);
   });
 
   let currentIndex = Math.max(0, scenes.findIndex(scene => scene.id === location.hash.slice(1)));
