@@ -1,0 +1,25 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/desarrollo-web-alcobendas.html",
+      "destination": "/desarrollo-web-alcobendas",
+      "permanent": true
+    },
+    {
+      "source": "/en/web-developer-alcobendas.html",
+      "destination": "/en/web-developer-alcobendas",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/desarrollo-web-alcobendas",
+      "destination": "/desarrollo-web-alcobendas.html"
+    },
+    {
+      "source": "/en/web-developer-alcobendas",
+      "destination": "/en/web-developer-alcobendas.html"
+    }
+  ]
+}

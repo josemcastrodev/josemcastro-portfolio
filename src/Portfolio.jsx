@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
 import gsap from 'gsap';
 import Analytics from './Analytics.jsx';
+import ContactForm from './ContactForm.jsx';
 
 const EMAIL = 'jose1911castro@gmail.com';
 const LINKEDIN = 'https://www.linkedin.com/in/josemcastrop/';
@@ -148,7 +149,7 @@ export default function Portfolio() {
     let transition;
     // Animate the absolutely positioned labels themselves: transforming their
     // static parent changes their containing block until clearProps runs.
-    const revealSelector = '.hero-name span, .hero-copy > *, .about-copy > *, .projects-heading > *, .project-text > *, .experience-title, .career-heading, .career-label, .mobile-career > *, .stack-copy > *, .stack-legend > div, .breadth-title, .breadth-description, .orbit-project, .contact-copy > *, .contact footer';
+    const revealSelector = '.hero-name span, .hero-copy > *, .hero-service-cta, .about-copy > *, .projects-heading > *, .project-text > *, .experience-title, .career-heading, .career-label, .mobile-career > *, .stack-copy > *, .stack-legend > div, .breadth-title, .breadth-description, .orbit-project, .contact-copy > *, .contact-form > *, .contact footer';
     const reveals = new Map();
     const reveal = (page, direction = 1, delay = 0) => {
       reveals.get(page)?.kill();
@@ -200,6 +201,9 @@ export default function Portfolio() {
     navigation.current = navigate;
     const wheel = event => {
       if (!desktop.matches || event.ctrlKey || document.querySelector('dialog[open]') || Math.abs(event.deltaX) > Math.abs(event.deltaY)) return;
+      if (event.target.closest('textarea')) return;
+      const inner = event.target.closest('.contact-layout');
+      if (inner && ((event.deltaY > 0 && inner.scrollTop + inner.clientHeight < inner.scrollHeight - 1) || (event.deltaY < 0 && inner.scrollTop > 0))) return;
       event.preventDefault();
       const now = performance.now();
       if (busy || now < unlockAt) { wheelSum = 0; lastWheel = now; return; }
@@ -266,6 +270,7 @@ export default function Portfolio() {
         </header>
         <div className="hero-title-plane"><h1 className="hero-name" translate="no"><span>José María</span> <span>Castro</span></h1></div>
         <div className="hero-copy"><p className="hero-role">{t.role}</p><p className="hero-stack" translate="no">{t.stackLine}</p><span className="blue-rule"/><p className="hero-description">{t.heroLine}</p><div className="hero-actions"><a className="primary-action" href="#proyectos">{t.projectsCta}<span>→</span></a><a className="text-action" href="#experiencia">{t.journeyCta}</a></div></div>
+        <a className="hero-service-cta" href={es ? '/desarrollo-web-alcobendas.html' : '/en/web-developer-alcobendas.html'}>{es ? '¿Necesitas una web?' : 'Need a website?'} <span aria-hidden="true">↗</span></a>
         <span className="hero-engraving micro" aria-hidden="true">{caption(labels.connect)}</span><p className="hero-side micro">{labels.human}</p><p className="corner bottom-left micro">{labels.scale}</p><p className="corner bottom-right micro">{caption(labels.code)}</p>
       </section>
       <section className="scene about" id="sobre-mi"><Artwork name="about" alt={t.portraitAlt}/><div className="about-copy" data-reveal><h2>{t.aboutTitle}</h2><p>{t.aboutBody}</p><div className="trait-row">{t.traits.map(x => <span key={x}>{x}</span>)}</div></div></section>
@@ -291,7 +296,9 @@ export default function Portfolio() {
         <div className="project-orbit">{t.extraProjects.map(([name,domain],i) => <span className={`orbit-project orbit-${i}`} key={name}><strong>{name}</strong><small>{domain}</small></span>)}</div><p className="corner bottom-left micro">{es ? 'Ideas en órbita real' : 'Ideas in real orbit'}</p><p className="corner bottom-right micro">{es ? 'Distintos mundos. Mejores soluciones.' : 'Different worlds. Better solutions.'}</p>
       </section>
       <section className="scene contact" id="contacto">
-        <Artwork name="contact"/><p className="corner top-left micro"><span className="rule-inline"/>{labels.contact}</p><div className="contact-copy" data-reveal><h2>{t.contactTitle}</h2><p>{t.contactBody}</p><a className="primary-action" href={`mailto:${EMAIL}`}>{t.contactCta}<span>→</span></a><div className="contact-links"><a href={`mailto:${EMAIL}`}>{EMAIL}</a><a href={LINKEDIN} target="_blank" rel="noreferrer">LinkedIn <span>⟶</span></a><a className="service-link" href={es ? '/desarrollo-web-alcobendas.html' : '/en/web-developer-alcobendas.html'}>{t.serviceLink} <span>⟶</span></a></div></div><p className="contact-note micro">{caption(labels.better)}</p><footer><span>José María Castro</span><span>Full Stack Engineer</span><span className="micro">{labels.footer}</span></footer>
+        <Artwork name="contact"/><p className="corner top-left micro"><span className="rule-inline"/>{labels.contact}</p>
+        <div className="contact-layout"><div className="contact-copy" data-reveal><h2>{t.contactTitle}</h2><p>{t.contactBody}</p><div className="contact-links"><a href={`mailto:${EMAIL}`}>{EMAIL}<span>↗</span></a><a href={LINKEDIN} target="_blank" rel="noreferrer">LinkedIn<span>↗</span></a><a href={es ? '/desarrollo-web-alcobendas' : '/en/web-developer-alcobendas'}>{es ? 'Una web para tu negocio' : 'A website for your business'}<span>↗</span></a></div></div><ContactForm lang={lang}/></div>
+        <footer><span>José María Castro</span><span>Full Stack Engineer</span><span className="micro">{labels.footer}</span></footer>
       </section>
     </main><nav className={`page-navigation ${activePage === 4 ? 'on-light' : ''}`} aria-label={es ? 'Secciones' : 'Sections'}>{pageIds.map((id,i) => <a href={`#${id}`} key={id} aria-current={activePage === i ? 'page' : undefined} aria-label={(es ? ['Inicio','Sobre mí','Proyectos','Experiencia','Tecnologías','Sectores','Contacto'] : ['Home','About','Projects','Experience','Technologies','Sectors','Contact'])[i]}><span/></a>)}</nav><DetailDialog detail={detail} close={() => setDetail(null)} lang={lang}/>
   </div>;
