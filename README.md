@@ -1,6 +1,14 @@
+<p align="center">
+  <img src="docs/cover.jpg" alt="josemcastro.dev · Portfolio personal · React 19, Vite, GSAP, Cloudflare Pages" width="100%">
+</p>
+
 # josemcastro.dev
 
 Código de mi portfolio personal: [josemcastro.dev](https://josemcastro.dev).
+
+<p align="center">
+  <a href="https://josemcastro.dev"><img src="docs/screenshot.jpg" alt="Portada de josemcastro.dev" width="100%"></a>
+</p>
 
 Soy José María Castro, desarrollador full stack (.NET, React, Node.js). En la web están mi experiencia, los proyectos en los que he trabajado y un formulario de contacto.
 
