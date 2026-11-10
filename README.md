@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/cover.jpg" alt="josemcastro.dev · Portfolio personal · React 19, Vite, GSAP, Cloudflare Pages" width="100%">
+  <img src="docs/portada.jpg" alt="josemcastro.dev · Portfolio personal · React 19, Vite, GSAP, Cloudflare Pages" width="100%">
 </p>
 
 # josemcastro.dev
