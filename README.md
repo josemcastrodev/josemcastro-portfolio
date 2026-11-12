@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/portada.jpg" alt="josemcastro.dev · Portfolio personal · React 19, Vite, GSAP, Cloudflare Pages" width="100%">
+  <img src="docs/portada.jpg" alt="josemcastro.dev · Portfolio personal · Vite, GSAP, Cloudflare Pages" width="100%">
 </p>
 
 # josemcastro.dev
@@ -10,15 +10,16 @@ Código de mi portfolio personal: [josemcastro.dev](https://josemcastro.dev).
   <a href="https://josemcastro.dev"><img src="docs/screenshot.jpg" alt="Portada de josemcastro.dev" width="100%"></a>
 </p>
 
-Soy José María Castro, desarrollador full stack (.NET, React, Node.js). En la web están mi experiencia, los proyectos en los que he trabajado y un formulario de contacto.
+Soy Jose María Castro, Senior Full Stack Developer (.NET, React, IA). En la web están mi experiencia, los proyectos en los que he trabajado, mis apps publicadas y un formulario de contacto.
 
 ## Stack
 
-- **React 19** y **Vite 6**, sin framework por encima.
-- **GSAP** para las animaciones.
-- **Prerenderizado propio**: tras el build, `scripts/prerender.mjs` renderiza la página a HTML y la inyecta en `dist/index.html`, para que buscadores y asistentes de IA lean el contenido sin ejecutar JavaScript.
+- **Vite 6** con varias páginas HTML y **JavaScript sin framework**: la portada y la página de desarrollo web son HTML estático, legible por buscadores y asistentes de IA sin ejecutar nada.
+- **GSAP** (ScrollTrigger, ScrollSmoother y SplitText) para las animaciones ligadas al scroll.
+- **Canvas 2D** para el retrato de la portada: al pasar el ratón, una lente lo redibuja con líneas de código cuyo tono sale de la propia foto.
+- **Fuentes alojadas en el propio sitio** con Fontsource (Archivo, Instrument Serif y JetBrains Mono), sin peticiones a terceros.
 - **Cloudflare Pages** para el alojamiento y **Pages Functions** para el formulario de contacto (`functions/api/contact.js`), que envía el correo con Resend.
-- Español e inglés, con datos estructurados (JSON-LD) y `llms.txt`.
+- Datos estructurados (JSON-LD) y `llms.txt`. La página de desarrollo web está en español e inglés.
 
 ## Desarrollo
 
@@ -28,7 +29,7 @@ npm run dev
 ```
 
 ```bash
-npm run build     # build de cliente + SSR + prerenderizado
+npm run build
 npm run preview
 ```
 
@@ -45,8 +46,8 @@ El formulario de contacto necesita dos variables en Cloudflare Pages. No hay nin
 
 | Ruta | Contenido |
 |---|---|
-| `src/` | Componentes y estilos |
-| `public/` | Imágenes, fuentes y la landing de desarrollo web en Alcobendas |
+| `index.html` | Portada |
+| `desarrollo-web-alcobendas.html`, `en/` | Página de desarrollo web, en español e inglés |
+| `src/v2/` | Estilos y scripts de las páginas actuales |
+| `public/` | Imágenes, favicon, CV y páginas de privacidad y confirmación |
 | `functions/api/` | Función del formulario de contacto |
-| `scripts/` | Prerenderizado |
-| `DESIGN.md` | Sistema visual: colores, tipografía y criterios de diseño |
