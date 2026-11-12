@@ -313,7 +313,7 @@ function initClock() {
 }
 
 /* ------------------------------------------------------------------
-   Entrada: cortina roja, el logo se dibuja y el nombre sube
+   Entrada: velo rojo con el logo calado; el logo sale hacia ti y abre la página
 ------------------------------------------------------------------- */
 function strokeSetup(paths) {
   paths.forEach((p) => {
@@ -327,31 +327,46 @@ function intro() {
   const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
   if (reduced) return tl;
 
-  const loaderPaths = gsap.utils.toArray('.mark--loader path');
-  strokeSetup(loaderPaths);
-  const counter = { v: 0 };
-  const countEl = document.querySelector('.loader-count');
-
-  // Sin scroll mientras dura la cortina
+  // Sin scroll mientras dura la carga
   const smoother = ScrollSmoother.get();
   if (smoother) smoother.paused(true); else document.documentElement.style.overflow = 'hidden';
   const unlock = () => { if (smoother) smoother.paused(false); else document.documentElement.style.overflow = ''; };
 
+  // El logo es un hueco en el velo rojo. Primero se dibuja; después crece desde el centro,
+  // como si saliera de la pantalla, hasta que el hueco lo ocupa todo y queda la página.
+  const logo = document.querySelector('.loader-logo');
+  const loaderPaths = gsap.utils.toArray('.loader-logo path');
+  strokeSetup(loaderPaths);
+  const view = { s: 1, ax: 24 };          // escala y punto del logo que queda en el centro
+  const place = () => {
+    const cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+    logo.setAttribute('transform', `translate(${cx - view.ax * view.s} ${cy - 24 * view.s}) scale(${view.s})`);
+  };
+  const base = gsap.utils.clamp(104, 210, window.innerWidth * 0.125) / 48;
+  view.s = base;
+  place();
+  logo.setAttribute('opacity', '1');
+  window.addEventListener('resize', place);
+  // El zoom acaba dentro del palo de la J (6 × 16 unidades): tiene que tapar la pantalla entera
+  const full = Math.max(window.innerWidth / 6, window.innerHeight / 16) * 1.2;
+
   gsap.set(words, { yPercent: 115 });
   gsap.set('.portrait', { yPercent: 12, opacity: 0, scale: 1.06, transformOrigin: '50% 100%' });
   gsap.set('.fade-ui, .nav > *', { opacity: 0, y: 14 });
-  gsap.set('.mark--loader .mark-dot', { scale: 0, transformOrigin: '50% 50%' });
+  gsap.set('.loader-dot', { scale: 0, transformOrigin: '50% 50%' });
 
-  tl.to(counter, { v: 100, duration: 1.5, ease: 'power2.inOut', onUpdate: () => { countEl.textContent = Math.round(counter.v); } }, 0)
-    .to(loaderPaths, { strokeDashoffset: 0, duration: 1.1, stagger: 0.25, ease: 'power3.inOut' }, 0.1)
-    .to('.mark--loader .mark-dot', { scale: 1, duration: 0.35, ease: 'back.out(3)' }, 1.25)
-    .to('.loader', { yPercent: -100, duration: 0.95, ease: 'expo.inOut' }, 1.7)
-    .to('.portrait', { yPercent: 0, opacity: 1, scale: 1, duration: 1.1 }, 2.05)
-    .add(() => startPortraitIntro(), 2.05)
-    .to(words, { yPercent: 0, duration: 1.25, stagger: 0.09 }, 2.15)
-    .to('.nav > *, .fade-ui', { opacity: 1, y: 0, duration: 0.9, stagger: 0.06 }, 2.75)
-    .set('.loader', { display: 'none' })
-    .add(unlock, 2.6);
+  tl.to(loaderPaths, { strokeDashoffset: 0, duration: 0.8, stagger: 0.18, ease: 'power3.inOut' }, 0.15)
+    .to('.loader-dot', { scale: 1, duration: 0.3, ease: 'back.out(3)' }, 0.95)
+    // toma impulso hacia atrás y sale disparado hacia delante
+    .to(view, { s: base * 0.86, duration: 0.3, ease: 'power2.out', onUpdate: place }, 1.15)
+    .to(view, { s: full, ax: 29, duration: 0.95, ease: 'expo.in', onUpdate: place }, 1.45)
+    .set('.loader', { display: 'none' }, 2.42)
+    .to('.portrait', { yPercent: 0, opacity: 1, scale: 1, duration: 1.1 }, 1.95)
+    .add(() => startPortraitIntro(), 2.0)
+    .to(words, { yPercent: 0, duration: 1.25, stagger: 0.09 }, 2.05)
+    .to('.nav > *, .fade-ui', { opacity: 1, y: 0, duration: 0.9, stagger: 0.06 }, 2.6)
+    .add(unlock, 2.4)
+    .add(() => window.removeEventListener('resize', place), 2.45);
   return tl;
 }
 

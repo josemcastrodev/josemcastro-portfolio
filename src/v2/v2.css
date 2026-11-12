@@ -36,22 +36,15 @@ img, svg, canvas { display: block; }
 .mark-c, .mark-j { stroke: var(--bone); stroke-width: 6; stroke-linecap: square; stroke-linejoin: miter; }
 .mark-dot { fill: var(--accent); }
 
-/* ---------- Cortina de carga ---------- */
+/* ---------- Pantalla de carga ---------- */
 .loader {
   position: fixed; inset: 0; z-index: 100;
-  background: var(--accent);
-  display: grid; place-items: center;
-  will-change: transform;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  /* Si el script no llega a arrancar, el velo se retira solo */
+  animation: loader-out 0s 8s forwards;
 }
-.loader .mark { width: clamp(84px, 9vw, 140px); height: auto; }
-.loader .mark-c, .loader .mark-j { stroke: var(--ink); }
-.loader .mark-dot { fill: var(--ink); }
-.loader-count {
-  position: absolute; right: var(--pad); bottom: calc(var(--pad) - .12em);
-  font-weight: 900; font-stretch: 62%;
-  font-size: clamp(90px, 17vw, 280px); line-height: .8;
-  color: var(--ink); font-variant-numeric: tabular-nums;
-}
+@keyframes loader-out { to { visibility: hidden; } }
 
 /* ---------- Navegación ---------- */
 .nav {
