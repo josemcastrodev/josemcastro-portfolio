@@ -1,0 +1,22 @@
+/* Aviso de privacidad */
+.consent {
+  position: fixed; left: var(--pad); bottom: var(--pad); z-index: 70;
+  width: min(380px, calc(100vw - var(--pad) * 2));
+  padding: 20px 22px 22px;
+  background: var(--bone); color: #121110;
+  border-radius: 18px;
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, .7);
+  font-stretch: 100%;
+}
+.consent[hidden] { display: none; }
+.consent h2 { margin: 0 0 8px; font-weight: 900; font-stretch: 72%; font-size: 24px; line-height: 1; text-transform: uppercase; }
+.consent p { margin: 0 0 10px; font-size: 14.5px; line-height: 1.45; }
+.consent > a { display: inline-block; font-size: 13.5px; border-bottom: 1px solid var(--accent); margin-bottom: 16px; }
+.consent > div { display: flex; gap: 8px; }
+.consent > div button {
+  flex: 1; height: 44px; border-radius: 12px; border: 2px solid #121110;
+  background: transparent; color: #121110;
+  font-family: var(--display); font-weight: 800; font-stretch: 88%; font-size: 13px; letter-spacing: .04em; text-transform: uppercase;
+}
+.consent > div button[data-choice="accepted"] { background: #121110; color: var(--bone); }
+.consent-close { position: absolute; right: 10px; top: 8px; width: 32px; height: 32px; border: 0; background: transparent; font-size: 22px; line-height: 1; color: #121110; }

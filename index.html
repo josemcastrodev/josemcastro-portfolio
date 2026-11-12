@@ -1,42 +1,396 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0b0d0f" />
-    <meta name="description" content="José María Castro, desarrollador web freelance y Senior Full Stack en Alcobendas. Páginas web profesionales, rápidas y con presupuesto ajustado para negocios y autónomos." />
-    <link rel="canonical" href="https://josemcastro.dev/" />
-    <link rel="alternate" type="text/plain" href="https://josemcastro.dev/llms.txt" title="Resumen para modelos de lenguaje" />
-    <meta name="robots" content="index,follow,max-image-preview:large" />
-    <meta property="og:url" content="https://josemcastro.dev/" />
-    <meta property="og:locale" content="es_ES" />
-    <meta property="og:image" content="https://josemcastro.dev/jose-maria-castro.png" />
-    <meta property="og:image:secure_url" content="https://josemcastro.dev/jose-maria-castro.png" />
-    <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:width" content="1122" />
-    <meta property="og:image:height" content="1402" />
-    <meta property="og:image:alt" content="José María Castro" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://josemcastro.dev/jose-maria-castro.png" />
-    <meta name="twitter:image:alt" content="José María Castro" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfilePage","@id":"https://josemcastro.dev/#profile","url":"https://josemcastro.dev/","name":"José María Castro — Desarrollador web freelance y Senior Full Stack en Alcobendas","mainEntity":{"@id":"https://josemcastro.dev/#person"}},{"@type":"Person","@id":"https://josemcastro.dev/#person","name":"José María Castro","url":"https://josemcastro.dev/","image":"https://josemcastro.dev/jose-maria-castro.png","jobTitle":"Desarrollador web freelance y Senior Full Stack Developer","email":"mailto:jose1911castro@gmail.com","homeLocation":{"@type":"Place","name":"Alcobendas, Madrid, España"},"areaServed":["Alcobendas","San Sebastián de los Reyes","Madrid","España"],"knowsAbout":["Desarrollo web","Páginas web para negocios",".NET","C#","React","Node.js","Next.js","SQL Server","Integraciones de software","Automatización"],"sameAs":["https://github.com/chemita19","https://www.linkedin.com/in/josemcastrop/"]},{"@type":"WebSite","@id":"https://josemcastro.dev/#website","url":"https://josemcastro.dev/","name":"José María Castro — Desarrollo web","inLanguage":["es","en"],"publisher":{"@id":"https://josemcastro.dev/#person"}}]}</script>
-    <meta property="og:title" content="José María Castro | Desarrollo web freelance en Alcobendas" />
-    <meta property="og:description" content="Páginas web profesionales, rápidas y con presupuesto ajustado para negocios, pymes y autónomos." />
-    <meta property="og:type" content="website" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preload" href="/fonts/manrope-400.ttf" as="font" type="font/ttf" crossorigin />
-    <title>Desarrollador Web Freelance en Alcobendas | José María Castro</title>
-    <link rel="stylesheet" href="/contact-form.css" />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZ5B1NE58P"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-SZ5B1NE58P', { allow_google_signals: false, allow_ad_personalization_signals: false });
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#121110" />
+  <title>Jose María Castro | Senior Full Stack Developer (.NET, React, IA)</title>
+  <meta name="description" content="Jose María Castro, Senior Full Stack Developer en Madrid. Siete años construyendo productos SaaS, ERP y analítica en tiempo real con .NET, React y SQL Server, con la IA como parte del oficio." />
+  <link rel="canonical" href="https://josemcastro.dev/" />
+  <link rel="alternate" type="text/plain" href="https://josemcastro.dev/llms.txt" title="Resumen para modelos de lenguaje" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://josemcastro.dev/" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:title" content="Jose María Castro | Senior Full Stack Developer" />
+  <meta property="og:description" content="Jose María Castro, Senior Full Stack Developer en Madrid. Siete años construyendo productos SaaS, ERP y analítica en tiempo real con .NET, React y SQL Server, con la IA como parte del oficio." />
+  <meta property="og:image" content="https://josemcastro.dev/og-jose-maria-castro.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Jose María Castro, Senior Full Stack Developer" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://josemcastro.dev/og-jose-maria-castro.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfilePage","@id":"https://josemcastro.dev/#profile","url":"https://josemcastro.dev/","name":"Jose María Castro — Senior Full Stack Developer","mainEntity":{"@id":"https://josemcastro.dev/#person"}},{"@type":"Person","@id":"https://josemcastro.dev/#person","name":"Jose María Castro","url":"https://josemcastro.dev/","image":"https://josemcastro.dev/og-jose-maria-castro.jpg","jobTitle":"Senior Full Stack Developer","homeLocation":{"@type":"Place","name":"Madrid, España"},"knowsAbout":[".NET","C#","ASP.NET Core","SQL Server","React","Next.js","TypeScript","Node.js","Integración de LLM","Desarrollo con agentes de IA","Desarrollo web"],"sameAs":["https://github.com/josemcastrodev","https://www.linkedin.com/in/josemcastrop/"]},{"@type":"WebSite","@id":"https://josemcastro.dev/#website","url":"https://josemcastro.dev/","name":"Jose María Castro","inLanguage":"es","publisher":{"@id":"https://josemcastro.dev/#person"}}]}</script>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preload" as="image" href="/v2/retrato.webp" fetchpriority="high" />
+  <link rel="stylesheet" href="/src/v2/v2.css" />
+  <link rel="stylesheet" href="/src/v2/v2-secciones.css" />
+  <link rel="stylesheet" href="/src/v2/v2-movimiento.css" />
+  <link rel="stylesheet" href="/src/v2/v2-aviso.css" />
+</head>
+<body>
+
+  <!-- Cortina de carga -->
+  <div class="loader" aria-hidden="true">
+    <svg class="mark mark--loader" viewBox="0 0 48 48" fill="none">
+      <path class="mark-c" d="M38 10H10v28h28" />
+      <path class="mark-j" d="M29 19v10H19" />
+      <rect class="mark-dot" x="34" y="21" width="6" height="6" />
+    </svg>
+    <span class="loader-count">0</span>
+  </div>
+
+  <div class="progress" aria-hidden="true"></div>
+
+  <!-- Navegación fija -->
+  <header class="nav">
+    <a class="brand" href="#top" data-scroll aria-label="Jose María Castro, inicio">
+      <svg class="mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <path class="mark-c" d="M38 10H10v28h28" />
+        <path class="mark-j" d="M29 19v10H19" />
+        <rect class="mark-dot" x="34" y="21" width="6" height="6" />
+      </svg>
+      <span class="brand-text"><i>Jose María</i><b>Castro</b></span>
+    </a>
+    <div class="nav-actions">
+      <a class="pill magnetic" href="/v2/cv-jose-maria-castro.pdf" target="_blank" rel="noreferrer"><span>Descargar CV</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v9m0 0L4.5 7.5M8 11l3.5-3.5M3 14h10" /></svg></a>
+      <button class="menu magnetic" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- Menú a pantalla completa -->
+  <nav class="overlay" aria-label="Secciones" aria-hidden="true">
+    <ul>
+      <li><a href="#trabajo" data-scroll><i>01</i>En qué he trabajado</a></li>
+      <li><a href="#apps" data-scroll><i>02</i>Apps propias</a></li>
+      <li><a href="#experiencia" data-scroll><i>03</i>Experiencia</a></li>
+      <li><a href="#ia" data-scroll><i>04</i>IA en mi trabajo</a></li>
+      <li><a href="#freelance" data-scroll><i>05</i>Freelance</a></li>
+      <li><a href="#contacto" data-scroll><i>06</i>Contacto</a></li>
+    </ul>
+  </nav>
+
+  <aside class="consent" aria-label="Cookies analíticas" hidden>
+    <button class="consent-close" type="button" aria-label="Cerrar">×</button>
+    <h2>Tu privacidad</h2>
+    <p>Usamos Google Analytics para medir visitas e interacciones. La medición sigue activa aunque pulses rechazar.</p>
+    <a href="/privacidad.html" target="_blank" rel="noreferrer">Información de privacidad y cookies</a>
+    <div><button type="button" data-choice="rejected">Rechazar</button><button type="button" data-choice="accepted">Aceptar analíticas</button></div>
+  </aside>
+
+  <div id="smooth-wrapper">
+    <div id="smooth-content">
+
+      <!-- 1. Portada -->
+      <section class="hero" id="top">
+        <div class="hero-grid" aria-hidden="true"></div>
+
+        <h1 class="name" aria-label="Jose María Castro">
+          <span class="word w-jose"><span>Jose</span></span>
+          <span class="word w-maria"><span>María</span></span>
+          <span class="word w-castro"><span>Castro</span></span>
+        </h1>
+
+        <div class="portrait">
+          <canvas class="portrait-canvas" aria-label="Retrato de Jose María Castro"></canvas>
+        </div>
+
+        <div class="name name--front" aria-hidden="true">
+          <span class="word w-castro"><span>Castro</span></span>
+        </div>
+
+        <p class="role fade-ui">
+          <em>Senior Full Stack</em>
+          <em>Developer</em>
+        </p>
+        <p class="stack fade-ui">
+          <span>.NET · C# · SQL Server</span>
+          <span>React · Next.js</span>
+          <span>IA aplicada</span>
+        </p>
+
+        <div class="corner corner--left fade-ui">
+          <span class="dot"></span>
+          <span>Madrid, ES</span>
+          <span class="clock">--:--</span>
+        </div>
+        <div class="corner corner--right fade-ui">
+          <span>Scroll</span>
+          <i class="scroll-line"></i>
+        </div>
+        <p class="hint fade-ui">Pasa el ratón por la foto</p>
+      </section>
+
+      <!-- 2. Cinta -->
+      <section class="tape">
+        <div class="tape-row tape-row--serif" data-dir="-1">
+          <span>productos SaaS — ERP a medida — analítica en tiempo real — tiendas online — productos SaaS — ERP a medida — analítica en tiempo real — tiendas online —</span>
+        </div>
+        <div class="tape-card">
+          <img src="/v2/retrato.webp" alt="" />
+          <svg class="mark mark--draw" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <path class="mark-c" d="M38 10H10v28h28" />
+            <path class="mark-j" d="M29 19v10H19" />
+          </svg>
+          <span class="tape-tag">7 años · +20 proyectos</span>
+        </div>
+        <div class="tape-row tape-row--caps" data-dir="1">
+          <span>.NET · C# · SQL SERVER · REACT · NEXT.JS · NODE · AZURE · IA · .NET · C# · SQL SERVER · REACT · NEXT.JS · NODE · AZURE · IA ·</span>
+        </div>
+      </section>
+
+      <!-- 3. Declaración -->
+      <section class="statement" data-nav="light">
+        <p class="eyebrow">Sobre mí</p>
+        <p class="statement-text" data-words>Siete años construyendo <em>software</em> que se usa: SaaS, ERP y <em>analítica</em> en tiempo real. De los requisitos con el cliente a <em>producción</em>.</p>
+      </section>
+
+      <!-- 4. Tipos de proyecto: scroll horizontal -->
+      <section class="work" id="trabajo">
+        <div class="work-head">
+          <p class="eyebrow eyebrow--dark">En qué he trabajado</p>
+          <h2 class="h-xl">Más de veinte proyectos.<br />Cuatro tipos de <em>producto</em>.</h2>
+        </div>
+        <div class="work-track">
+          <article class="panel">
+            <span class="panel-n">01</span>
+            <div class="motif motif--saas" aria-hidden="true"><i></i><i></i><i></i></div>
+            <h3>Productos SaaS</h3>
+            <p>Aplicaciones multi-tenant con suscripciones, pagos y automatización de trámites.</p>
+            <p class="mono">ASP.NET Core · Next.js · SQL Server · Stripe</p>
+          </article>
+          <article class="panel panel--bone">
+            <span class="panel-n">02</span>
+            <div class="motif motif--erp" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <h3>ERP y gestión a medida</h3>
+            <p>Software interno para operar el negocio: pedidos, almacén, nóminas y expedientes.</p>
+            <p class="mono">.NET 8 · EF Core · React · T-SQL</p>
+          </article>
+          <article class="panel panel--orange">
+            <span class="panel-n">03</span>
+            <div class="motif motif--live" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><b>En vivo</b></div>
+            <h3>Analítica en tiempo real</h3>
+            <p>Datos de cámaras y sensores que llegan por MQTT y se ven en paneles en vivo.</p>
+            <p class="mono">SignalR · MQTT · WPF · SQL Server</p>
+          </article>
+          <article class="panel">
+            <span class="panel-n">04</span>
+            <div class="motif motif--shop" aria-hidden="true"><i></i><i></i><i></i><b>49,90 €</b></div>
+            <h3>Tiendas online y webs</h3>
+            <p>E-commerce con varias pasarelas de pago, varios idiomas y gestor de contenidos.</p>
+            <p class="mono">Next.js · Node.js · Stripe · PayPal</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 5. Apps propias -->
+      <section class="apps-intro" id="apps">
+        <p class="eyebrow eyebrow--dark">Apps propias</p>
+        <h2 class="h-xl">Lo que he construido<br />y publicado por mi <em>cuenta</em>.</h2>
+      </section>
+
+      <section class="app app--tcg">
+        <div class="app-bgname" aria-hidden="true"><span>TCG Stock Up — TCG Stock Up — TCG Stock Up —</span></div>
+        <div class="app-inner">
+          <div class="app-copy">
+            <p class="mono">01 · iOS · Android · Web</p>
+            <h3>TCG Stock Up</h3>
+            <p>Avisa cuando vuelve a haber stock de producto sellado de Pokémon TCG en las tiendas online españolas, con su precio y su idioma.</p>
+            <p class="app-fact"><b data-count="600" data-prefix="+">+600</b><span>usuarios<br />registrados</span></p>
+            <ul class="tags"><li>Expo</li><li>React Native</li><li>NestJS</li><li>PostgreSQL</li><li>Playwright</li><li>Cloudflare Workers</li></ul>
+            <a class="app-link magnetic" href="https://tcgstockup.com/" target="_blank" rel="noreferrer">tcgstockup.com <span>↗</span></a>
+          </div>
+          <figure class="app-shot"><img src="/v2/tcg-web.jpg" alt="Portada de TCG Stock Up" loading="lazy" /></figure>
+        </div>
+      </section>
+
+      <section class="app app--gochi">
+        <div class="app-bgname" aria-hidden="true"><span>Gochi — Gochi — Gochi — Gochi — Gochi —</span></div>
+        <div class="app-inner">
+          <div class="app-copy">
+            <p class="mono">02 · iOS · Android · Web</p>
+            <h3>Gochi</h3>
+            <p>Red social para puntuar los restaurantes a los que vas y descubrir sitios nuevos a través de las listas de otros usuarios.</p>
+            <p class="app-fact"><b>3</b><span>plataformas:<br />iOS, Android y web</span></p>
+            <ul class="tags"><li>Expo</li><li>React Native</li><li>Supabase</li><li>Astro</li><li>RevenueCat</li></ul>
+            <a class="app-link magnetic" href="https://gochi.es/" target="_blank" rel="noreferrer">gochi.es <span>↗</span></a>
+          </div>
+          <figure class="app-shot app-shot--pair">
+            <img src="/v2/gochi-web.jpg" alt="Portada de Gochi" loading="lazy" />
+            <img class="app-phones" src="/v2/gochi-app.png" alt="Pantallas de la app Gochi" loading="lazy" />
+          </figure>
+        </div>
+      </section>
+
+      <!-- 6. Más proyectos y experiencia -->
+      <div class="light" data-nav="light">
+        <section class="more">
+          <p class="eyebrow">Más proyectos</p>
+          <h2 class="h-xl">Y seis <em>más</em>,<br />entre código y clientes.</h2>
+          <ul class="more-list">
+            <li><i class="rule"></i><a href="https://github.com/josemcastrodev/stock-alerts-api" target="_blank" rel="noreferrer" data-img="/v2/escena-stock-alerts-api.png"><span class="more-n">01</span><span class="more-name">Stock Alerts API</span><span class="more-type">API REST · ASP.NET Core · .NET 10</span><span class="more-go">Código ↗</span></a></li>
+            <li><i class="rule"></i><a href="https://github.com/josemcastrodev/calibrario" target="_blank" rel="noreferrer" data-img="/v2/escena-calibrario.png"><span class="more-n">02</span><span class="more-name">Calibrario</span><span class="more-type">Comparador de relojes · Astro · TypeScript</span><span class="more-go">Código ↗</span></a></li>
+            <li><i class="rule"></i><a href="https://github.com/josemcastrodev/acurruco" target="_blank" rel="noreferrer" data-img="/v2/escena-acurruco.png"><span class="more-n">03</span><span class="more-name">Acurruco</span><span class="more-type">Guías y catálogo de bebé · Astro</span><span class="more-go">Código ↗</span></a></li>
+            <li><i class="rule"></i><a href="https://kumoba.co/" target="_blank" rel="noreferrer"><span class="more-n">04</span><span class="more-name">Kumoba</span><span class="more-type">Web para cliente · Nuxt · DatoCMS</span><span class="more-go">Web ↗</span></a></li>
+            <li><i class="rule"></i><a href="https://oritzo.com/" target="_blank" rel="noreferrer"><span class="more-n">05</span><span class="more-name">Villa Oritzo</span><span class="more-type">Web para cliente · Nuxt · DatoCMS</span><span class="more-go">Web ↗</span></a></li>
+            <li><i class="rule"></i><a href="https://nomadburger.es/" target="_blank" rel="noreferrer"><span class="more-n">06</span><span class="more-name">Nomad Burger</span><span class="more-type">Web para cliente · Nuxt · DatoCMS</span><span class="more-go">Web ↗</span></a></li>
+          </ul>
+          <i class="rule rule--end"></i>
+          <div class="more-preview" aria-hidden="true"><img alt="" /><b></b></div>
+        </section>
+
+        <section class="exp" id="experiencia">
+          <p class="eyebrow">Experiencia</p>
+          <h2 class="h-xl">Siete años,<br />dos <em>etapas</em>.</h2>
+          <div class="exp-rows">
+            <div class="exp-line" aria-hidden="true"><i></i></div>
+
+            <article class="exp-row">
+              <i class="rule"></i>
+              <span class="exp-dot" aria-hidden="true"></span>
+              <div class="exp-when">
+                <span class="exp-logo"><img src="/logos/q2b.png" alt="Q2B Studio" /></span>
+                <p class="exp-years">2022<i>→</i>Hoy</p>
+                <p class="mono">Madrid · En remoto</p>
+              </div>
+              <div class="exp-what">
+                <h3>Senior Full Stack Developer <em>en Q2B Studio</em></h3>
+                <p>Consultora de software a medida. Más de 20 proyectos en 4 años para clientes de retail, logística, legal, recursos humanos, industria y e-commerce, en equipos de 2 a 5 desarrolladores y en contacto directo con el cliente.</p>
+                <ul class="exp-list">
+                  <li>Productos SaaS multi-tenant con suscripciones y pagos.</li>
+                  <li>ERP y aplicaciones de gestión a medida.</li>
+                  <li>Plataformas de analítica en tiempo real con cámaras, sensores y paneles en vivo.</li>
+                  <li>APIs REST e integraciones con Stripe, PayPal, TPV, Microsoft Graph y WhatsApp.</li>
+                  <li>Evolución de productos .NET en producción y desarrollos nuevos con .NET 8, EF Core, React y TypeScript.</li>
+                </ul>
+                <ul class="exp-stats">
+                  <li><b data-count="20" data-prefix="+">+20</b><span>proyectos</span></li>
+                  <li><b data-count="4">4</b><span>años</span></li>
+                  <li><b>2–5</b><span>personas por equipo</span></li>
+                </ul>
+                <ul class="tags tags--ink"><li>.NET 8</li><li>ASP.NET Core</li><li>EF Core</li><li>SQL Server</li><li>React</li><li>Next.js</li><li>TypeScript</li><li>Azure</li></ul>
+              </div>
+            </article>
+
+            <article class="exp-row">
+              <i class="rule"></i>
+              <span class="exp-dot" aria-hidden="true"></span>
+              <div class="exp-when">
+                <span class="exp-logo exp-logo--wide"><img src="/logos/babel.svg" alt="Babel" /></span>
+                <p class="exp-years">2019<i>→</i>2022</p>
+                <p class="mono">Madrid · Híbrido</p>
+              </div>
+              <div class="exp-what">
+                <h3>Desarrollador .NET <em>en Babel</em></h3>
+                <p>Casi tres años en el equipo de OHS Solutions, una plataforma de seguridad y salud laboral. Empecé como júnior y acabé como desarrollador principal del módulo CAE, uno de los que más pedían los clientes.</p>
+                <ul class="exp-list">
+                  <li>Análisis funcional de las nuevas funcionalidades.</li>
+                  <li>Atención de peticiones de clientes y resolución de incidencias.</li>
+                  <li>Trabajo en Scrum con Azure DevOps.</li>
+                </ul>
+                <ul class="exp-stats">
+                  <li><b data-count="3">3</b><span>años</span></li>
+                  <li><b data-count="8">8</b><span>personas en el equipo</span></li>
+                  <li><b data-count="1">1</b><span>módulo a mi cargo</span></li>
+                </ul>
+                <ul class="tags tags--ink"><li>C#</li><li>VB.NET</li><li>SQL Server</li><li>Entity Framework</li><li>Azure DevOps</li></ul>
+              </div>
+            </article>
+            <i class="rule rule--end"></i>
+          </div>
+          <a class="btn btn--ink magnetic" href="/v2/cv-jose-maria-castro.pdf" target="_blank" rel="noreferrer">Descargar el currículum completo <span>↓</span></a>
+        </section>
+      </div>
+
+      <!-- 7. IA -->
+      <section class="ai" id="ia">
+        <p class="eyebrow eyebrow--dark">IA en mi trabajo</p>
+        <div class="ai-top">
+          <h2 class="h-xl">La IA es parte<br />del <em>oficio</em>.</h2>
+          <figure class="term" aria-label="Ejemplo de una sesión de trabajo con un agente">
+            <figcaption><i></i><i></i><i></i><span>ejemplo de sesión</span></figcaption>
+            <div class="term-body">
+              <p class="cmd">$ claude "añade paginación al endpoint de pedidos"</p>
+              <p>● Leo OrdersController.cs y sus tests</p>
+              <p>● Escribo el cambio y 6 tests nuevos</p>
+              <p class="ok">✓ 48 tests en verde</p>
+              <p>● Abro el pull request para que lo revises</p>
+              <p class="cmd">$ git diff --stat</p>
+              <p>4 archivos, +132 −18</p>
+            </div>
+          </figure>
+        </div>
+        <i class="rule"></i>
+        <div class="ai-grid">
+          <article><span class="mono">01</span><h3>Desarrollo con agentes</h3><p>Programo a diario con Claude Code y Cursor: reparto tareas a agentes, reviso su código y lo integro por pull request.</p></article>
+          <article><span class="mono">02</span><h3>LLM dentro de las aplicaciones</h3><p>Modelos de texto y de visión por API para leer documentos, extraer sus datos, traducir y generar contenido.</p></article>
+          <article><span class="mono">03</span><h3>Fiabilidad y coste</h3><p>Salidas en JSON validadas, protección frente a prompt injection y registro del coste de cada operación.</p></article>
+          <article><span class="mono">04</span><h3>Automatización</h3><p>Flujos con n8n y automatización de navegador con Playwright.</p></article>
+        </div>
+        <dl class="stack-table">
+          <div><dt>Backend</dt><dd>C#, .NET 8, ASP.NET Core Web API, Entity Framework Core, SignalR, Node.js (NestJS)</dd></div>
+          <div><dt>Frontend</dt><dd>React, Next.js, TypeScript, React Native (Expo)</dd></div>
+          <div><dt>Datos</dt><dd>SQL Server, T-SQL, Azure SQL, PostgreSQL</dd></div>
+          <div><dt>Cloud</dt><dd>Azure (App Service, Pipelines, DevOps), Docker, Cloudflare, Git y GitHub</dd></div>
+          <div><dt>IA</dt><dd>Claude Code, Cursor, integración de LLM por API, MCP, n8n, Playwright</dd></div>
+        </dl>
+      </section>
+
+      <!-- 8. Freelance -->
+      <section class="free" id="freelance" data-nav="orange">
+        <p class="eyebrow eyebrow--onorange">Desarrollo freelance</p>
+        <h2 class="h-xl">¿Necesitas una <em>web</em><br />para tu negocio?</h2>
+        <div class="free-row">
+          <p>También hago webs para negocios y autónomos: rápidas, claras y hechas a medida, sin plantillas.</p>
+          <a class="btn btn--ink magnetic" href="/desarrollo-web-alcobendas">Desarrollo web en Alcobendas <span>→</span></a>
+        </div>
+        <div class="ribbon" aria-hidden="true"><span>Kumoba — Villa Oritzo — Nomad Burger — Kumoba — Villa Oritzo — Nomad Burger — Kumoba — Villa Oritzo — Nomad Burger —</span></div>
+      </section>
+
+      <!-- 9. Contacto -->
+      <section class="contact" id="contacto">
+        <h2 class="contact-big">¿Hablamos?</h2>
+        <div class="contact-grid">
+          <div class="contact-side">
+            <p>Escríbeme por aquí, por correo o por LinkedIn. Suelo responder en el mismo día.</p>
+            <ul class="contact-links">
+              <li><a class="magnetic" href="mailto:jose1911castro@gmail.com">jose1911castro@gmail.com <span>↗</span></a></li>
+              <li><a class="magnetic" href="https://www.linkedin.com/in/josemcastrop/" target="_blank" rel="noreferrer">LinkedIn <span>↗</span></a></li>
+              <li><a class="magnetic" href="https://github.com/josemcastrodev" target="_blank" rel="noreferrer">GitHub <span>↗</span></a></li>
+            </ul>
+          </div>
+          <form class="form" novalidate>
+            <div class="form-row">
+              <label>Nombre<input name="name" autocomplete="name" required maxlength="100" placeholder="Tu nombre" /></label>
+              <label>Email<input name="email" type="email" autocomplete="email" spellcheck="false" required maxlength="254" placeholder="tu@email.com" /></label>
+            </div>
+            <label>Mensaje<textarea name="message" required minlength="10" maxlength="5000" rows="4" placeholder="Cuéntame en qué puedo ayudarte"></textarea></label>
+            <label class="form-trap" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off" /></label>
+            <label class="form-privacy"><input name="privacy" type="checkbox" required value="yes" /><span>Acepto la <a href="/privacidad.html" target="_blank" rel="noreferrer">política de privacidad</a>.</span></label>
+            <button class="btn btn--orange magnetic" type="submit">Enviar mensaje <span>→</span></button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <footer class="foot">
+          <svg class="seal" viewBox="0 0 200 200" aria-hidden="true">
+            <defs><path id="seal-path" d="M100 100m-78 0a78 78 0 1 1 156 0a78 78 0 1 1 -156 0" /></defs>
+            <text><textPath href="#seal-path">JOSE MARÍA CASTRO · FULL STACK · .NET · REACT · IA · </textPath></text>
+            <g transform="translate(64 64) scale(1.5)" fill="none">
+              <path class="mark-c" d="M38 10H10v28h28" />
+              <path class="mark-j" d="M29 19v10H19" />
+              <rect class="mark-dot" x="34" y="21" width="6" height="6" />
+            </g>
+          </svg>
+          <p class="mono">© 2026 Jose María Castro · Madrid</p>
+          <p class="mono"><a href="/privacidad.html">Privacidad</a> · <a href="#top" data-scroll>Volver arriba ↑</a></p>
+        </footer>
+      </section>
+
+    </div>
+  </div>
+
+  <script type="module" src="/src/v2/main.js"></script>
+</body>
 </html>
