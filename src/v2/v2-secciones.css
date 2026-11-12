@@ -185,11 +185,11 @@ body.menu-open .nav .pill { background: var(--accent); color: var(--ink); }
 .more-list a:hover .more-name { transform: translateX(22px); color: var(--accent); }
 .more-preview {
   position: absolute; left: 0; top: 0; z-index: 3; pointer-events: none;
-  width: 330px; height: 228px; overflow: hidden;
-  background: var(--accent); display: grid; place-items: center;
+  width: 340px; height: 234px; overflow: hidden;
+  background: var(--ink); border-radius: 14px;
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .6);
 }
-.more-preview img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.15); mix-blend-mode: multiply; }
-.more-preview b { position: absolute; font-weight: 900; font-stretch: 62%; font-size: 170px; line-height: 1; color: var(--ink); text-transform: uppercase; }
+.more-preview img { width: 100%; height: 100%; object-fit: cover; }
 
 .exp { padding: 10vh var(--pad) 14vh; }
 .exp-row { display: grid; grid-template-columns: minmax(0, 36%) minmax(0, 1fr); gap: 4vw; padding: 34px 0 40px; border-top: 2px solid var(--ink); }

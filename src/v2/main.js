@@ -39,6 +39,10 @@ const CODE = [
   'if (!ModelState.IsValid) return BadRequest(ModelState);',
   'await hub.Clients.Group(tenantId).SendAsync("stockChanged", product);',
 ].join(' ');
+// Apertura: al entrar, la cara aparece tapada por franjas de código que parpadean y se retiran
+let startPortraitIntro = () => {};
+const rnd = (n) => { const x = Math.sin(n * 127.1) * 43758.5453; return x - Math.floor(x); };
+
 function initPortrait() {
   const canvas = document.querySelector('.portrait-canvas');
   const ctx = canvas.getContext('2d');
@@ -54,6 +58,21 @@ function initPortrait() {
   let radius = 0;
   let userActive = false;
   let lastMove = 0;
+  let clock = 0;
+  let introAt = -1;          // instante en que arranca la apertura (-1 = no ha empezado)
+  let introPending = false;
+  const INTRO = 2.5;         // segundos
+  // Franjas horizontales sobre la cabeza y el pecho, de alturas distintas
+  const bands = [];
+  {
+    let y = 0.01, i = 0;
+    while (y < 0.74) {
+      const hh = 0.04 + rnd(i + 3) * 0.075;
+      bands.push({ y, hh, dir: i % 2 ? 1 : -1, tIn: rnd(i + 11) * 0.3, tOut: 1.15 + rnd(i + 29) * 0.95, i });
+      y += hh; i++;
+    }
+  }
+  startPortraitIntro = () => { introPending = true; };
 
   function buildAlt() {
     alt.width = canvas.width; alt.height = canvas.height;
@@ -170,8 +189,39 @@ function initPortrait() {
     if (ready) { buildAlt(); buildFade(); }
   }
 
+  const ease = (t) => 1 - Math.pow(1 - Math.min(1, Math.max(0, t)), 3);
+
+  function drawIntro(t) {
+    bands.forEach((b) => {
+      if (t < b.tIn || t > b.tOut + 0.3) return;
+      const enter = ease((t - b.tIn) / 0.32);
+      const leave = ease((t - b.tOut) / 0.3);
+      // La franja entra desde un lado y se va por el contrario
+      let x0 = b.dir > 0 ? 0 : w * (1 - enter);
+      let x1 = b.dir > 0 ? w * enter : w;
+      if (b.dir > 0) x0 = w * leave; else x1 = w * (1 - leave);
+      if (x1 - x0 < 1) return;
+      // Mientras está, salta de lado a golpes, como una señal que se engancha
+      const step = Math.floor(t * 11);
+      const settle = Math.min(1, Math.max(0, (t - 0.25) / 1.1));
+      const dx = (rnd(step * 7 + b.i * 13) - 0.5) * w * 0.16 * (1 - settle * 0.75);
+      const y = b.y * h, hh = b.hh * h;
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(x0, y, x1 - x0, hh + 0.5);
+      ctx.clip();
+      ctx.clearRect(0, 0, w, h);
+      ctx.drawImage(alt, dx, 0, w, h);
+      ctx.restore();
+    });
+  }
+
   function draw(time) {
     if (!ready) return;
+    clock = time;
+    if (introPending) { introPending = false; introAt = time; }
+    const introT = introAt < 0 ? -1 : (time - introAt) / 1000;
+    const inIntro = introT >= 0 && introT < INTRO;
     // Sin ratón (o en móvil) la lente se pasea sola por la cara.
     if (!userActive || time - lastMove > 4000) {
       const s = time / 1000;
@@ -181,6 +231,7 @@ function initPortrait() {
       target.y = h * (0.27 + 0.06 * Math.sin(s * 1.3 + 1));
       target.r = Math.min(w, h) * 0.2 * Math.min(1, on * 1.7);
     }
+    if (inIntro) target.r = 0;   // la lente espera a que termine la apertura
     const speeds = [0.2, 0.11, 0.065];
     blob.forEach((p, i) => {
       const to = i === 0 ? target : blob[i - 1];
@@ -205,6 +256,7 @@ function initPortrait() {
       ctx.drawImage(alt, 0, 0, w, h);
       ctx.restore();
     }
+    if (inIntro) drawIntro(introT);
     ctx.globalCompositeOperation = 'destination-in';
     ctx.drawImage(fade, 0, 0, w, h);
     ctx.globalCompositeOperation = 'source-over';
@@ -294,7 +346,8 @@ function intro() {
     .to(loaderPaths, { strokeDashoffset: 0, duration: 1.1, stagger: 0.25, ease: 'power3.inOut' }, 0.1)
     .to('.mark--loader .mark-dot', { scale: 1, duration: 0.35, ease: 'back.out(3)' }, 1.25)
     .to('.loader', { yPercent: -100, duration: 0.95, ease: 'expo.inOut' }, 1.7)
-    .to('.portrait', { yPercent: 0, opacity: 1, scale: 1, duration: 1.5 }, 2.05)
+    .to('.portrait', { yPercent: 0, opacity: 1, scale: 1, duration: 1.1 }, 2.05)
+    .add(() => startPortraitIntro(), 2.05)
     .to(words, { yPercent: 0, duration: 1.25, stagger: 0.09 }, 2.15)
     .to('.nav > *, .fade-ui', { opacity: 1, y: 0, duration: 0.9, stagger: 0.06 }, 2.75)
     .set('.loader', { display: 'none' })
@@ -541,8 +594,9 @@ function initMore() {
   const section = document.querySelector('.more');
   const preview = section.querySelector('.more-preview');
   if (coarse) { preview.remove(); return; }
+  // Las miniaturas se piden por adelantado para que aparezcan al instante
+  section.querySelectorAll('.more-list a[data-img]').forEach((a) => { new Image().src = a.dataset.img; });
   const img = preview.querySelector('img');
-  const letter = preview.querySelector('b');
   const xTo = gsap.quickTo(preview, 'x', { duration: 0.5, ease: 'power3.out' });
   const yTo = gsap.quickTo(preview, 'y', { duration: 0.5, ease: 'power3.out' });
   const rTo = gsap.quickTo(preview, 'rotate', { duration: 0.6, ease: 'power3.out' });
@@ -556,9 +610,8 @@ function initMore() {
   section.querySelectorAll('.more-list a').forEach((a) => {
     a.addEventListener('pointerenter', () => {
       const src = a.dataset.img;
-      img.style.display = src ? 'block' : 'none';
-      if (src) img.src = src;
-      letter.textContent = src ? '' : a.querySelector('.more-name').textContent.trim()[0];
+      if (!src) return;
+      img.src = src;
       gsap.to(preview, { scale: 1, opacity: 1, duration: 0.4, ease: 'expo.out', overwrite: 'auto' });
     });
     a.addEventListener('pointerleave', () => {
