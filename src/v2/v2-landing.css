@@ -1,0 +1,88 @@
+/* Página de desarrollo web: usa el sistema de la portada y añade sus propias secciones */
+
+.skip-link { position: fixed; left: 12px; top: -60px; z-index: 90; background: var(--bone); color: var(--ink); padding: 10px 14px; border-radius: 10px; font-weight: 700; }
+.skip-link:focus { top: 12px; }
+
+/* El título espera a que carguen las fuentes para no dar un salto */
+.landing:not(.ready) .l-title { visibility: hidden; }
+
+.lang { display: flex; align-items: center; height: 52px; padding: 0 6px; border-radius: 14px; background: var(--bone); }
+.lang a { display: grid; place-items: center; min-width: 40px; height: 40px; border-radius: 10px; font-family: var(--mono); font-size: 12.5px; letter-spacing: .08em; color: var(--ink); }
+.lang a[aria-current="true"] { background: var(--ink); color: var(--bone); }
+.nav[data-theme="light"] .lang, .nav[data-theme="orange"] .lang { background: var(--ink); }
+.nav[data-theme="light"] .lang a, .nav[data-theme="orange"] .lang a { color: var(--bone); }
+.nav[data-theme="light"] .lang a[aria-current="true"], .nav[data-theme="orange"] .lang a[aria-current="true"] { background: var(--bone); color: var(--ink); }
+
+/* ---------- Portada ---------- */
+.l-hero {
+  position: relative; overflow: hidden;
+  min-height: 100vh; min-height: 100svh;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 150px var(--pad) 9vh;
+  background: radial-gradient(70vw 70vh at 78% 40%, var(--glow) 0%, transparent 70%), var(--ink);
+}
+.l-hero > * { position: relative; }
+.l-hero .hero-grid { position: absolute; }
+.l-title {
+  margin: 0 0 5vh;
+  font-weight: 900; font-stretch: 62%;
+  font-size: min(15.6vw, 32vh); line-height: .84; letter-spacing: -.014em;
+  text-transform: uppercase;
+}
+.l-title em { font-family: var(--serif); font-style: italic; font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--accent); }
+.l-hero-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; flex-wrap: wrap; }
+.l-lead { margin: 0; font-size: clamp(18px, 1.7vw, 26px); line-height: 1.4; max-width: 30ch; color: var(--soft); font-stretch: 100%; }
+.l-seal { position: absolute !important; right: var(--pad); top: 18vh; width: clamp(110px, 13vw, 200px); height: auto; animation: none; }
+.l-seal text { fill: var(--bone); font-family: var(--mono); font-weight: 700; font-size: 13.2px; letter-spacing: .16em; }
+.l-seal .mark-c, .l-seal .mark-j { stroke: var(--bone); stroke-width: 6; }
+
+.l-tape { padding: 9vh 0 11vh; gap: 2vh; }
+
+/* ---------- Soluciones ---------- */
+.l-services .more-list a { grid-template-columns: 54px minmax(0, 1fr) minmax(0, 30ch) 190px; align-items: center; }
+.l-services .more-type { font-family: var(--body, inherit); font-size: 16px; line-height: 1.45; letter-spacing: 0; text-transform: none; font-stretch: 100%; }
+.l-support { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 4vw; margin-top: 5vh; align-items: start; }
+.l-support p { margin: 0; font-size: 17.5px; line-height: 1.5; max-width: 52ch; font-stretch: 100%; }
+.l-support .mono { font-size: 12.5px; }
+
+/* ---------- Proceso ---------- */
+.l-process { position: relative; z-index: 11; background: var(--ink); color: var(--bone); border-radius: 28px 28px 0 0; margin-top: -28px; padding: 16vh var(--pad) calc(16vh + 28px); }
+.l-process .h-xl { margin-bottom: 8vh; }
+.l-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.l-steps .panel { width: auto; height: auto; min-height: 340px; }
+.l-steps .panel-n { font-weight: 900; font-stretch: 62%; font-family: var(--display); font-size: clamp(70px, 8vw, 132px); line-height: .8; letter-spacing: -.01em; position: static; margin-bottom: auto; }
+.l-steps .panel { justify-content: flex-start; }
+.l-steps .panel h3 { margin-top: 30px; }
+
+/* ---------- Preguntas ---------- */
+.l-faq { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 6vw; padding: 16vh var(--pad) 14vh; }
+.l-faq-list { border-top: 2px solid var(--ink); }
+.l-faq-list details { border-bottom: 1px solid rgba(18, 17, 16, .25); }
+.l-faq-list summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 22px 0; font-weight: 900; font-stretch: 72%; font-size: clamp(24px, 2.5vw, 40px); line-height: 1; text-transform: uppercase; }
+.l-faq-list summary::-webkit-details-marker { display: none; }
+.l-faq-list summary span { font-family: var(--serif); font-weight: 400; font-size: 1.3em; color: var(--accent); transition: transform .35s var(--ease-out); }
+.l-faq-list details[open] summary span { transform: rotate(45deg); }
+.l-faq-list p { margin: 0 0 24px; font-size: 17.5px; line-height: 1.55; max-width: 58ch; font-stretch: 100%; }
+
+/* ---------- Clientes ---------- */
+.l-client-links { list-style: none; margin: 6vh 0 0; padding: 0; display: flex; gap: 14px 34px; flex-wrap: wrap; }
+.l-client-links a { display: inline-flex; gap: 10px; font-weight: 900; font-stretch: 70%; font-size: clamp(26px, 3vw, 48px); text-transform: uppercase; border-bottom: 3px solid var(--ink); padding-bottom: 4px; }
+
+/* ---------- Contacto ---------- */
+.l-contact-title { margin-bottom: 2vh; }
+.landing .foot > a.mono { color: var(--bone); border-bottom: 1px solid var(--accent); padding-bottom: 2px; }
+
+@media (max-width: 760px) {
+  .lang { height: 48px; }
+  .lang a { min-width: 34px; height: 36px; }
+  .landing .pill .pill-keep { display: inline; }
+  .landing .pill { padding: 0 16px; height: 48px; font-size: 13px; }
+  .l-hero { padding-top: 120px; }
+  .l-title { font-size: 17.5vw; }
+  .l-seal { top: 96px; width: 92px; }
+  .l-services .more-list a { grid-template-columns: 34px 1fr; }
+  .l-support, .l-faq, .l-steps { grid-template-columns: 1fr; }
+  .l-steps .panel { min-height: 0; padding-top: 26px; }
+  .l-process { border-radius: 18px 18px 0 0; margin-top: -18px; padding: 12vh var(--pad) calc(12vh + 18px); }
+  .l-faq { padding: 12vh var(--pad); gap: 30px; }
+}

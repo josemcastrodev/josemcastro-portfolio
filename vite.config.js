@@ -4,9 +4,12 @@ import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { onRequestPost } from './functions/api/contact.js';
 
-const cleanRoutes = new Map([
+// Páginas que compila Vite (viven en la raíz, no en public/)
+const builtRoutes = new Map([
   ['/desarrollo-web-alcobendas', '/desarrollo-web-alcobendas.html'],
   ['/en/web-developer-alcobendas', '/en/web-developer-alcobendas.html'],
+]);
+const cleanRoutes = new Map([
   ['/contacto-enviado', '/contacto-enviado.html'],
   ['/en/message-sent', '/en/message-sent.html'],
 ]);
@@ -26,6 +29,12 @@ function cleanLandingRoutes() {
       response.writeHead(308, { Location: `${redirect}${requestUrl.search}` });
       response.end();
       return;
+    }
+
+    const built = builtRoutes.get(requestUrl.pathname);
+    if (built) {
+      request.url = `${built}${requestUrl.search}`;
+      return next();
     }
 
     const file = cleanRoutes.get(requestUrl.pathname);
@@ -106,4 +115,13 @@ function localContactApi() {
 
 export default defineConfig({
   plugins: [cleanLandingRoutes(), localContactApi()],
+  build: {
+    rollupOptions: {
+      input: {
+        main: resolve(import.meta.dirname, 'index.html'),
+        landing: resolve(import.meta.dirname, 'desarrollo-web-alcobendas.html'),
+        landingEn: resolve(import.meta.dirname, 'en/web-developer-alcobendas.html'),
+      },
+    },
+  },
 });
